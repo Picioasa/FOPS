@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		6B20E05620B5D997005479C4 /* DepotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B20E05520B5D997005479C4 /* DepotCell.swift */; };
+		6B20E05820B5E765005479C4 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B20E05720B5E765005479C4 /* ContainerView.swift */; };
+		6B236FE120F152F000C348CC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FDE20F152F000C348CC /* CoreDataManager.swift */; };
+		6B236FE220F152F000C348CC /* FopsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FDF20F152F000C348CC /* FopsModel.xcdatamodeld */; };
+		6B236FE420F1530900C348CC /* LoginViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FE320F1530900C348CC /* LoginViews.swift */; };
+		6B236FE820F1531600C348CC /* OrdersController+DepotControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FE520F1531600C348CC /* OrdersController+DepotControllerDelegate.swift */; };
+		6B236FE920F1531600C348CC /* OrdersController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FE620F1531600C348CC /* OrdersController+UICollectionView.swift */; };
+		6B236FEA20F1531600C348CC /* OrdersController+CreateOrderDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FE720F1531600C348CC /* OrdersController+CreateOrderDelegate.swift */; };
+		6B236FEE20F1532B00C348CC /* CreateOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FEC20F1532B00C348CC /* CreateOrderController.swift */; };
+		6B236FEF20F1532B00C348CC /* CreateOrderViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FED20F1532B00C348CC /* CreateOrderViews.swift */; };
+		6B236FF120F153F300C348CC /* DepotController+ContainerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FF020F153F300C348CC /* DepotController+ContainerViewDelegate.swift */; };
+		6B33E60B20F151FD00722DC3 /* DepotController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B33E60A20F151FD00722DC3 /* DepotController+UICollectionView.swift */; };
+		6B4930AA206FF31C00E5BB27 /* OrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4930A9206FF31C00E5BB27 /* OrdersController.swift */; };
+		6B66795620728D4800D72D14 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B66795520728D4800D72D14 /* OrdersCell.swift */; };
+		6B8EBB2220B48D95009C2092 /* DepotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EBB2120B48D95009C2092 /* DepotController.swift */; };
+		6BA89589205400970023B0A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA89588205400970023B0A7 /* Extensions.swift */; };
+		6BE8AF172053FDA300E333D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8AF162053FDA300E333D2 /* AppDelegate.swift */; };
+		6BE8AF192053FDA300E333D2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8AF182053FDA300E333D2 /* LoginController.swift */; };
+		6BE8AF1E2053FDA300E333D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE8AF1D2053FDA300E333D2 /* Assets.xcassets */; };
+		6BE8AF212053FDA300E333D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BE8AF1F2053FDA300E333D2 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6B20E05520B5D997005479C4 /* DepotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotCell.swift; sourceTree = "<group>"; };
+		6B20E05720B5E765005479C4 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		6B236FDE20F152F000C348CC /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		6B236FE020F152F000C348CC /* FopsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FopsModel.xcdatamodel; sourceTree = "<group>"; };
+		6B236FE320F1530900C348CC /* LoginViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViews.swift; sourceTree = "<group>"; };
+		6B236FE520F1531600C348CC /* OrdersController+DepotControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrdersController+DepotControllerDelegate.swift"; sourceTree = "<group>"; };
+		6B236FE620F1531600C348CC /* OrdersController+UICollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrdersController+UICollectionView.swift"; sourceTree = "<group>"; };
+		6B236FE720F1531600C348CC /* OrdersController+CreateOrderDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "OrdersController+CreateOrderDelegate.swift"; sourceTree = "<group>"; };
+		6B236FEC20F1532B00C348CC /* CreateOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderController.swift; sourceTree = "<group>"; };
+		6B236FED20F1532B00C348CC /* CreateOrderViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderViews.swift; sourceTree = "<group>"; };
+		6B236FF020F153F300C348CC /* DepotController+ContainerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepotController+ContainerViewDelegate.swift"; sourceTree = "<group>"; };
+		6B33E60A20F151FD00722DC3 /* DepotController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepotController+UICollectionView.swift"; sourceTree = "<group>"; };
+		6B4930A9206FF31C00E5BB27 /* OrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersController.swift; sourceTree = "<group>"; };
+		6B66795520728D4800D72D14 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
+		6B8EBB2120B48D95009C2092 /* DepotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotController.swift; sourceTree = "<group>"; };
+		6BA89588205400970023B0A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		6BE8AF132053FDA300E333D2 /* FOPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6BE8AF162053FDA300E333D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6BE8AF182053FDA300E333D2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		6BE8AF1D2053FDA300E333D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6BE8AF202053FDA300E333D2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6BE8AF222053FDA300E333D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6BE8AF102053FDA300E333D2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6B236FDD20F152DC00C348CC /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				6B236FDE20F152F000C348CC /* CoreDataManager.swift */,
+				6B236FDF20F152F000C348CC /* FopsModel.xcdatamodeld */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		6B236FEB20F1531B00C348CC /* Create Order */ = {
+			isa = PBXGroup;
+			children = (
+				6B236FEC20F1532B00C348CC /* CreateOrderController.swift */,
+				6B236FED20F1532B00C348CC /* CreateOrderViews.swift */,
+			);
+			path = "Create Order";
+			sourceTree = "<group>";
+		};
+		6B66795320728D0E00D72D14 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				6BE8AF182053FDA300E333D2 /* LoginController.swift */,
+				6B236FE320F1530900C348CC /* LoginViews.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		6B66795420728D2100D72D14 /* Orders */ = {
+			isa = PBXGroup;
+			children = (
+				6B4930A9206FF31C00E5BB27 /* OrdersController.swift */,
+				6B66795520728D4800D72D14 /* OrdersCell.swift */,
+				6B236FE720F1531600C348CC /* OrdersController+CreateOrderDelegate.swift */,
+				6B236FE520F1531600C348CC /* OrdersController+DepotControllerDelegate.swift */,
+				6B236FE620F1531600C348CC /* OrdersController+UICollectionView.swift */,
+				6B236FEB20F1531B00C348CC /* Create Order */,
+			);
+			path = Orders;
+			sourceTree = "<group>";
+		};
+		6B8EBB2020B48D75009C2092 /* Depot */ = {
+			isa = PBXGroup;
+			children = (
+				6B8EBB2120B48D95009C2092 /* DepotController.swift */,
+				6B20E05520B5D997005479C4 /* DepotCell.swift */,
+				6B20E05720B5E765005479C4 /* ContainerView.swift */,
+				6B33E60A20F151FD00722DC3 /* DepotController+UICollectionView.swift */,
+				6B236FF020F153F300C348CC /* DepotController+ContainerViewDelegate.swift */,
+			);
+			path = Depot;
+			sourceTree = "<group>";
+		};
+		6BE8AF0A2053FDA300E333D2 = {
+			isa = PBXGroup;
+			children = (
+				6BE8AF152053FDA300E333D2 /* FOPS */,
+				6BE8AF142053FDA300E333D2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		6BE8AF142053FDA300E333D2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6BE8AF132053FDA300E333D2 /* FOPS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6BE8AF152053FDA300E333D2 /* FOPS */ = {
+			isa = PBXGroup;
+			children = (
+				6B66795320728D0E00D72D14 /* Login */,
+				6B66795420728D2100D72D14 /* Orders */,
+				6B8EBB2020B48D75009C2092 /* Depot */,
+				6B236FDD20F152DC00C348CC /* Core Data */,
+				6BE8AF282053FDC600E333D2 /* Supporting Files */,
+				6BE8AF222053FDA300E333D2 /* Info.plist */,
+			);
+			path = FOPS;
+			sourceTree = "<group>";
+		};
+		6BE8AF282053FDC600E333D2 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6BE8AF1D2053FDA300E333D2 /* Assets.xcassets */,
+				6BE8AF162053FDA300E333D2 /* AppDelegate.swift */,
+				6BA89588205400970023B0A7 /* Extensions.swift */,
+				6BE8AF1F2053FDA300E333D2 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6BE8AF122053FDA300E333D2 /* FOPS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6BE8AF252053FDA300E333D2 /* Build configuration list for PBXNativeTarget "FOPS" */;
+			buildPhases = (
+				6BE8AF0F2053FDA300E333D2 /* Sources */,
+				6BE8AF102053FDA300E333D2 /* Frameworks */,
+				6BE8AF112053FDA300E333D2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FOPS;
+			productName = FOPS;
+			productReference = 6BE8AF132053FDA300E333D2 /* FOPS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6BE8AF0B2053FDA300E333D2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Vlad Gachi";
+				TargetAttributes = {
+					6BE8AF122053FDA300E333D2 = {
+						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6BE8AF0E2053FDA300E333D2 /* Build configuration list for PBXProject "FOPS" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6BE8AF0A2053FDA300E333D2;
+			productRefGroup = 6BE8AF142053FDA300E333D2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6BE8AF122053FDA300E333D2 /* FOPS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6BE8AF112053FDA300E333D2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6BE8AF212053FDA300E333D2 /* LaunchScreen.storyboard in Resources */,
+				6BE8AF1E2053FDA300E333D2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6BE8AF0F2053FDA300E333D2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B66795620728D4800D72D14 /* OrdersCell.swift in Sources */,
+				6B20E05620B5D997005479C4 /* DepotCell.swift in Sources */,
+				6B236FE420F1530900C348CC /* LoginViews.swift in Sources */,
+				6B33E60B20F151FD00722DC3 /* DepotController+UICollectionView.swift in Sources */,
+				6BE8AF192053FDA300E333D2 /* LoginController.swift in Sources */,
+				6B8EBB2220B48D95009C2092 /* DepotController.swift in Sources */,
+				6B20E05820B5E765005479C4 /* ContainerView.swift in Sources */,
+				6BA89589205400970023B0A7 /* Extensions.swift in Sources */,
+				6BE8AF172053FDA300E333D2 /* AppDelegate.swift in Sources */,
+				6B236FE120F152F000C348CC /* CoreDataManager.swift in Sources */,
+				6B236FEE20F1532B00C348CC /* CreateOrderController.swift in Sources */,
+				6B236FE220F152F000C348CC /* FopsModel.xcdatamodeld in Sources */,
+				6B236FEA20F1531600C348CC /* OrdersController+CreateOrderDelegate.swift in Sources */,
+				6B236FE920F1531600C348CC /* OrdersController+UICollectionView.swift in Sources */,
+				6B4930AA206FF31C00E5BB27 /* OrdersController.swift in Sources */,
+				6B236FEF20F1532B00C348CC /* CreateOrderViews.swift in Sources */,
+				6B236FF120F153F300C348CC /* DepotController+ContainerViewDelegate.swift in Sources */,
+				6B236FE820F1531600C348CC /* OrdersController+DepotControllerDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6BE8AF1F2053FDA300E333D2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6BE8AF202053FDA300E333D2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6BE8AF232053FDA300E333D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		6BE8AF242053FDA300E333D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6BE8AF262053FDA300E333D2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M22CH9YE8L;
+				INFOPLIST_FILE = FOPS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vlad.home.FOPS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6BE8AF272053FDA300E333D2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = M22CH9YE8L;
+				INFOPLIST_FILE = FOPS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.vlad.home.FOPS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6BE8AF0E2053FDA300E333D2 /* Build configuration list for PBXProject "FOPS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE8AF232053FDA300E333D2 /* Debug */,
+				6BE8AF242053FDA300E333D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6BE8AF252053FDA300E333D2 /* Build configuration list for PBXNativeTarget "FOPS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BE8AF262053FDA300E333D2 /* Debug */,
+				6BE8AF272053FDA300E333D2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		6B236FDF20F152F000C348CC /* FopsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				6B236FE020F152F000C348CC /* FopsModel.xcdatamodel */,
+			);
+			currentVersion = 6B236FE020F152F000C348CC /* FopsModel.xcdatamodel */;
+			path = FopsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 6BE8AF0B2053FDA300E333D2 /* Project object */;
+}
