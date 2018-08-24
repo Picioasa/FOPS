@@ -24,7 +24,7 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
   
   let cellId = "cellId"
   
-  fileprivate lazy var containerView: UIView = {
+  fileprivate lazy var containerView: ContainerView = {
     let cv = ContainerView()
     cv.delegate = self
     cv.backgroundColor = .white
@@ -38,6 +38,8 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    navigationItem.largeTitleDisplayMode = .never
     
     collectionView?.backgroundColor = .white
     collectionView?.alwaysBounceVertical = true

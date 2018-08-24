@@ -16,25 +16,10 @@ class DepotCell: UICollectionViewCell {
     }
   }
   
-  fileprivate let palletNumberLabel: UILabel = {
-    let label = UILabel()
-    return label
-  }()
-  
-  fileprivate let boxesLabel: UILabel = {
-    let label = UILabel()
-    return label
-  }()
-  
-  fileprivate let productLabel: UILabel = {
-    let label = UILabel()
-    return label
-  }()
-  
-  fileprivate let maxLifeLabel: UILabel = {
-    let label = UILabel()
-    return label
-  }()
+  fileprivate let palletNumberLabel = UILabel()
+  fileprivate let boxesLabel = UILabel()
+  fileprivate let productLabel = UILabel()
+  fileprivate let maxLifeLabel = UILabel()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -47,6 +32,7 @@ class DepotCell: UICollectionViewCell {
   }
   
   fileprivate func setupViews() {
+    
     let topSeparatorView = UIView()
     topSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.6)
     
@@ -79,23 +65,23 @@ class DepotCell: UICollectionViewCell {
   
   fileprivate func setupAttributedText() {
     guard let pallet = pallet else { return }
-    
+  
     let numberAttributedText = NSMutableAttributedString(string: "Pallet Number:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
     numberAttributedText.append(NSAttributedString(string: " \(String(pallet.number))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-    
+
     let boxesAttributedText = NSMutableAttributedString(string: "Boxes:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
     boxesAttributedText.append(NSAttributedString(string: " \(String(pallet.boxes))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-    
+
     let productAttributedText = NSMutableAttributedString(string: "Product:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
     productAttributedText.append(NSAttributedString(string: " \(pallet.product ?? "")", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-    
+
     let maxLifeAttributedText = NSMutableAttributedString(string: "Max Life:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    
+
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM dd, yyyy"
     let date = dateFormatter.string(from: pallet.date ?? "")
     maxLifeAttributedText.append(NSAttributedString(string: " \(date)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-    
+
     palletNumberLabel.attributedText = numberAttributedText
     boxesLabel.attributedText = boxesAttributedText
     productLabel.attributedText = productAttributedText

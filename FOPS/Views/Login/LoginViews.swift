@@ -8,58 +8,24 @@
 
 import UIKit
 
-struct LoginViews {
-  let fopsLogoView: UIImageView = {
-    let iv = UIImageView()
-    iv.image = #imageLiteral(resourceName: "FOPS_logo").withRenderingMode(.alwaysOriginal)
-    return iv
-  }()
+class LoginViews: UIView, UITextFieldDelegate {
   
-  let fopsTitleView: UIImageView = {
-    let iv = UIImageView()
-    iv.image = #imageLiteral(resourceName: "FOPS_title").withRenderingMode(.alwaysOriginal)
-    return iv
-  }()
+  let fopsLogoView = CustomImageView(image: #imageLiteral(resourceName: "FOPS_logo"))
+  let fopsTitleView = CustomImageView(image: #imageLiteral(resourceName: "FOPS_title"))
   
-  let usernameLabel: UILabel = {
-    let label = UILabel()
-    let attributedText = NSMutableAttributedString(string: "User Name", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .medium), NSAttributedStringKey.foregroundColor: UIColor.white])
-    label.attributedText = attributedText
-    return label
-  }()
+  let usernameLabel = CustomLabel(string: "User Name", color: UIColor.white)
+  let usernameTextField = CustomTextField()
   
-  let usernameTextField: UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .roundedRect
-    tf.returnKeyType = .done
-    return tf
-  }()
+  let passwordLabel = CustomLabel(string: "Password", color: UIColor.white)
+  let passwordTextField = CustomTextField()
   
-  let passwordLabel: UILabel = {
-    let label = UILabel()
-    let attributedText = NSMutableAttributedString(string: "Password", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .medium), NSAttributedStringKey.foregroundColor: UIColor.white])
-    label.attributedText = attributedText
-    return label
-  }()
+  let loginButton = CustomButton(title: "Login", backgroundColor: UIColor.lightGray)
   
-   let passwordTextField: UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .roundedRect
-    tf.isSecureTextEntry = true
-    tf.returnKeyType = .done
-    return tf
-  }()
-  
-   let loginButton: UIButton = {
-    let button = UIButton(type: .system)
-    let attributedTitle = NSMutableAttributedString(string: "Login", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.black])
-    button.setAttributedTitle(attributedTitle, for: .normal)
-    button.backgroundColor = .lightGray
-    button.layer.cornerRadius = 3
-    button.isEnabled = false
-//    button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
-    return button
-  }()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    setupTextFields()
+  }
   
   func setupViews(for controller: UIViewController) {
     
@@ -75,7 +41,9 @@ struct LoginViews {
     controller.view.addSubview(fopsTitleView)
     controller.view.addSubview(usernameStackView)
     controller.view.addSubview(passwordStackView)
+    
     controller.view.addSubview(loginButton)
+    loginButton.isEnabled = false
     
     fopsLogoView.anchor(top: controller.view.safeAreaLayoutGuide.topAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 40, left: 0, bottom: 0, right: 0), size: .init(width: 175, height: 175))
     fopsLogoView.centerXAnchor.constraint(equalTo: controller.view.centerXAnchor).isActive = true
@@ -89,6 +57,37 @@ struct LoginViews {
     
     loginButton.anchor(top: passwordStackView.bottomAnchor, leading: nil, bottom: nil, trailing: nil, padding: .init(top: 20, left: 0, bottom: 0, right: 0), size: .init(width: 80, height: 25))
     loginButton.centerXAnchor.constraint(equalTo: passwordStackView.centerXAnchor).isActive = true
+  }
+  
+  private func setupTextFields() {
+    usernameTextField.delegate = self
+    usernameTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+    
+    passwordTextField.delegate = self
+    passwordTextField.isSecureTextEntry = true
+    passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
+  }
+  
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    usernameTextField.resignFirstResponder()
+    passwordTextField.resignFirstResponder()
+    return true
+  }
+  
+  @objc fileprivate func handleTextInputChange() {
+    let isFormValid = usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+    
+    if isFormValid {
+      loginButton.isEnabled = true
+      loginButton.backgroundColor = .white
+    } else {
+      loginButton.isEnabled = false
+      loginButton.backgroundColor = .lightGray
+    }
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 

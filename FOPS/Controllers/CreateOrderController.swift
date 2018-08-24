@@ -25,7 +25,7 @@ class CreateOrderController: UIViewController {
     navigationItem.title = "Create Order"
     
     setupNavigationBarButtons()
-    
+
     createOrderViews.setupViews(for: self)
   }
   

@@ -18,7 +18,6 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     navigationItem.title = "Orders"
     
     setupNavigationBarButtons()
@@ -31,12 +30,21 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
   }
   
   fileprivate func setupNavigationBarButtons() {
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear_white").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleLogOut))
-    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(habdleAddOrder))
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear_white").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSettings))
+    navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddOrder))
   }
   
-  @objc private func handleLogOut() {
-    let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+  @objc private func handleSettings() {
+    let alertController = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
+    
+    alertController.addAction(UIAlertAction(title: "Refresh", style: .default, handler: { (_) in
+      JSONService.shared.refreshDatabase()
+      
+      DispatchQueue.main.async {
+        self.orders = CoreDataManager.shared.fetchOrders()
+        self.collectionView?.reloadData()
+      }
+    }))
     
     alertController.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { (_) in
       let loginController = LoginController()
@@ -47,7 +55,7 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
     present(alertController, animated: true, completion: nil)
   }
   
-  @objc private func habdleAddOrder() {
+  @objc private func handleAddOrder() {
     let createOrder = CreateOrderController()
     createOrder.delegate = self
     let navController = UINavigationController(rootViewController: createOrder)

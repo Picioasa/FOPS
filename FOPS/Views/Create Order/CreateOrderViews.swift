@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct CreateOrderViews {
+class CreateOrderViews: UIView, UITextFieldDelegate {
   
   let backgroundView: UIView = {
     let view = UIView()
@@ -16,32 +16,29 @@ struct CreateOrderViews {
     return view
   }()
   
-  let orderNameLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Name"
-    label.font = UIFont.boldSystemFont(ofSize: 14)
-    return label
-  }()
+  let orderNameLabel = CustomLabel(string: "Name", font: UIFont.boldSystemFont(ofSize: 14))
   
-  let orderNameTextField: UITextField = {
-    let tf = UITextField()
+  let orderNameTextField: CustomTextField = {
+    let tf = CustomTextField()
     tf.placeholder = "Enter Name"
     return tf
   }()
   
-  let orderNumberLabel: UILabel = {
-    let label = UILabel()
-    label.text = "Id"
-    label.font = UIFont.boldSystemFont(ofSize: 14)
-    return label
-  }()
+  let orderNumberLabel = CustomLabel(string: "Id", font: UIFont.boldSystemFont(ofSize: 14))
   
-  let orderNumberTextField: UITextField = {
-    let tf = UITextField()
+  let orderNumberTextField: CustomTextField = {
+    let tf = CustomTextField()
     tf.placeholder = "Enter Order Number"
     tf.keyboardType = .numberPad
     return tf
   }()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    orderNameTextField.delegate = self
+    orderNumberTextField.delegate = self
+  }
   
   func setupViews(for viewController: UIViewController) {
     viewController.view.addSubview(backgroundView)
@@ -61,6 +58,11 @@ struct CreateOrderViews {
     orderNumberTextField.anchor(top: orderNumberLabel.topAnchor, leading: orderNameTextField.leadingAnchor, bottom: orderNumberLabel.bottomAnchor, trailing: viewController.view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 8))
 
   }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
 }
 
 

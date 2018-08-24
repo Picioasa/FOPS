@@ -45,10 +45,6 @@ class ContainerView: UIView {
     setupButtons()
   }
   
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
   fileprivate func setupButtons() {
     let separatorView = UIView()
     separatorView.backgroundColor = UIColor(white: 0, alpha: 0.7)
@@ -75,6 +71,10 @@ class ContainerView: UIView {
   
   @objc fileprivate func handlePrinting() {
     delegate?.didPrint()
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
