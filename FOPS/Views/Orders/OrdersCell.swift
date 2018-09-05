@@ -10,13 +10,12 @@ import UIKit
 
 class OrdersCell: UICollectionViewCell {
   
+  // MARK: - Properties
   var order: Order? {
     didSet {
       setupAttributedText()
     }
   }
-  
-  var numberOfBoxes = 0
   
   fileprivate let orderNameLabel = UILabel()
   fileprivate let orderIdLabel = UILabel()
@@ -25,6 +24,7 @@ class OrdersCell: UICollectionViewCell {
   fileprivate let boxesLabel = UILabel()
   fileprivate let doneLabel = UILabel()
   
+  // MARK: - Computed Properties
   fileprivate let statusLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
@@ -51,12 +51,18 @@ class OrdersCell: UICollectionViewCell {
     return button
   }()
   
+  // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor =  UIColor.init(red: 247/255, green: 247/255, blue: 246/255, alpha: 1.0)
     setupViews()
   }
   
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - Private Methods
   fileprivate func setupViews() {
     let separatorView = UIView()
     separatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
@@ -118,7 +124,7 @@ class OrdersCell: UICollectionViewCell {
     despathedPalletsAttributedText.append(NSAttributedString(string: " \(order.despatchedPallets)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
     
     let boxesAttributedText = NSMutableAttributedString(string: "Boxes:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    boxesAttributedText.append(NSAttributedString(string: " \(numberOfBoxes)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
+    boxesAttributedText.append(NSAttributedString(string: " \(order.activeBoxes)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
     
     let doneAttributedText = NSMutableAttributedString(string: "Done:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
     doneAttributedText.append(NSAttributedString(string: " \(order.boxesDone)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
@@ -129,10 +135,6 @@ class OrdersCell: UICollectionViewCell {
     despatchedPalletsLabel.attributedText = despathedPalletsAttributedText
     boxesLabel.attributedText = boxesAttributedText
     doneLabel.attributedText = doneAttributedText
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
   }
 }
 

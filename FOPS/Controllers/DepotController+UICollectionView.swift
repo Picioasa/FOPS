@@ -8,15 +8,8 @@
 
 import UIKit
 
+// MARK: - CollectionViewDataSource
 extension DepotController {
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-    return 0
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: view.frame.width, height: 60)
-  }
   
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection: Int) -> Int {
     return pallets.count
@@ -24,7 +17,6 @@ extension DepotController {
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DepotCell
-    
     cell.pallet = pallets[indexPath.item]
     
     if selectedCells.contains(indexPath) {
@@ -36,6 +28,18 @@ extension DepotController {
     }
     
     return cell
+  }
+}
+
+// MARK: - CollectionViewDelegate
+extension DepotController {
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return 0
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: view.frame.width, height: 60)
   }
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -50,8 +54,6 @@ extension DepotController {
     collectionView.reloadItems(at: [indexPath])
   }
 }
-
-
 
 
 

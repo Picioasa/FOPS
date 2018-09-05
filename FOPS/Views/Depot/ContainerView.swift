@@ -16,8 +16,10 @@ protocol ContainerViewDelegate {
 
 class ContainerView: UIView {
   
+  //MARK: - Properties
   var delegate: ContainerViewDelegate?
   
+  // MARK: - Computed Properties
   fileprivate lazy var despatchButton: UIButton = {
     let button = UIButton(type: .system)
     button.setImage(#imageLiteral(resourceName: "delivery-truck").withRenderingMode(.alwaysOriginal), for: .normal)
@@ -39,12 +41,17 @@ class ContainerView: UIView {
     return button
   }()
   
+  // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
     setupButtons()
   }
   
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - Private Methods
   fileprivate func setupButtons() {
     let separatorView = UIView()
     separatorView.backgroundColor = UIColor(white: 0, alpha: 0.7)
@@ -61,6 +68,7 @@ class ContainerView: UIView {
     stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 4, bottom: 4, right: 4))
   }
   
+  // MARK: - Private Handlers
   @objc fileprivate func handleDespatching() {
     delegate?.didDispatch()
   }
@@ -71,10 +79,6 @@ class ContainerView: UIView {
   
   @objc fileprivate func handlePrinting() {
     delegate?.didPrint()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
   }
 }
 

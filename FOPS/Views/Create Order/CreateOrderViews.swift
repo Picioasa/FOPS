@@ -10,6 +10,7 @@ import UIKit
 
 class CreateOrderViews: UIView, UITextFieldDelegate {
   
+  // MARK: - Properties
   let backgroundView: UIView = {
     let view = UIView()
     view.backgroundColor = UIColor.init(red: 247/255, green: 247/255, blue: 246/255, alpha: 1.0)
@@ -18,28 +19,37 @@ class CreateOrderViews: UIView, UITextFieldDelegate {
   
   let orderNameLabel = CustomLabel(string: "Name", font: UIFont.boldSystemFont(ofSize: 14))
   
-  let orderNameTextField: CustomTextField = {
-    let tf = CustomTextField()
+  let orderNameTextField: UITextField = {
+    let tf = UITextField()
+    tf.borderStyle = .roundedRect
+    tf.returnKeyType = .done
     tf.placeholder = "Enter Name"
     return tf
   }()
   
   let orderNumberLabel = CustomLabel(string: "Id", font: UIFont.boldSystemFont(ofSize: 14))
   
-  let orderNumberTextField: CustomTextField = {
-    let tf = CustomTextField()
+  let orderNumberTextField: UITextField = {
+    let tf = UITextField()
+    tf.borderStyle = .roundedRect
+    tf.returnKeyType = .done
     tf.placeholder = "Enter Order Number"
     tf.keyboardType = .numberPad
     return tf
   }()
   
+  // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
     orderNameTextField.delegate = self
     orderNumberTextField.delegate = self
   }
   
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+  
+  // MARK: - Methods
   func setupViews(for viewController: UIViewController) {
     viewController.view.addSubview(backgroundView)
     viewController.view.addSubview(orderNameLabel)
@@ -56,13 +66,7 @@ class CreateOrderViews: UIView, UITextFieldDelegate {
     orderNumberLabel.anchor(top: orderNameLabel.bottomAnchor, leading: orderNameLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 0, bottom: 0, right: 0), size: .init(width: 50, height: 50))
     
     orderNumberTextField.anchor(top: orderNumberLabel.topAnchor, leading: orderNameTextField.leadingAnchor, bottom: orderNumberLabel.bottomAnchor, trailing: viewController.view.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0, right: 8))
-
   }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-  
 }
 
 

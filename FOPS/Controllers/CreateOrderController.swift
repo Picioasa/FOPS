@@ -15,25 +15,29 @@ protocol CreateOrderDelegate {
 
 class CreateOrderController: UIViewController {
   
+  // MARK: - Properties
   let createOrderViews = CreateOrderViews()
   var delegate: CreateOrderDelegate?
   
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
     view.backgroundColor = .white
-    navigationItem.title = "Create Order"
     
-    setupNavigationBarButtons()
-
+    setupNavigationBar()
     createOrderViews.setupViews(for: self)
   }
   
-  private func setupNavigationBarButtons() {
+  // MARK: - Methods
+  private func setupNavigationBar() {
+    navigationItem.title = "Create Order"
+
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(handleCreate))
   }
   
+  // MARK: - Handlers
   @objc private func handleCancel() {
     dismiss(animated: true, completion: nil)
   }

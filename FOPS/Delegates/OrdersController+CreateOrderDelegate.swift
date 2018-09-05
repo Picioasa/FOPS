@@ -12,6 +12,7 @@ extension OrdersController: CreateOrderDelegate {
   
   func didAdd(order: Order) {
     orders.append(order)
+    filteredOrders = orders
     
     let indexPath = IndexPath(row: orders.count - 1, section: 0)
     collectionView?.insertItems(at: [indexPath])

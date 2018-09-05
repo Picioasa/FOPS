@@ -10,6 +10,7 @@ import UIKit
 
 class DepotCell: UICollectionViewCell {
   
+  // MARK: - Properties
   var pallet: Pallet? {
     didSet {
       setupAttributedText()
@@ -21,18 +22,18 @@ class DepotCell: UICollectionViewCell {
   fileprivate let productLabel = UILabel()
   fileprivate let maxLifeLabel = UILabel()
   
+  // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
     setupViews()
   }
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
+
+  // MARK: - Methods
   fileprivate func setupViews() {
-    
     let topSeparatorView = UIView()
     topSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.6)
     
@@ -87,7 +88,6 @@ class DepotCell: UICollectionViewCell {
     productLabel.attributedText = productAttributedText
     maxLifeLabel.attributedText = maxLifeAttributedText
   }
-  
 }
 
 

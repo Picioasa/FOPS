@@ -8,8 +8,24 @@
 
 import UIKit
 
+// MARK: - CollectionViewDataSource
 extension OrdersController {
+  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return filteredOrders.count
+  }
   
+  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! OrdersCell
+    let order = filteredOrders[indexPath.item]
+    
+    cell.order = order
+    cell.deleteOrderButton.addTarget(self, action: #selector(handleDelete(_:)), for: .touchUpInside)
+    return cell
+  }
+}
+
+// MARK: - CollectionViewDelegate
+extension OrdersController {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 1
   }
@@ -18,39 +34,16 @@ extension OrdersController {
     return CGSize(width: view.frame.width, height: 114)
   }
   
-  override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return orders.count
-  }
-  
-  override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! OrdersCell
-    let order = orders[indexPath.item]
-
-    let pallets = order.pallets?.allObjects as? [Pallet]
-    
-    pallets?.forEach({ (pallet) in
-      cell.numberOfBoxes += Int(pallet.boxes)
-    })
-    
-    cell.order = order
-    cell.deleteOrderButton.addTarget(self, action: #selector(handleDelete(_:)), for: .touchUpInside)
-    
-    return cell
-  }
-  
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let depotController = DepotController(collectionViewLayout: UICollectionViewFlowLayout())
-    let order = orders[indexPath.item]
+    let order = filteredOrders[indexPath.item]
     
     self.selectedOrderIndexPath = indexPath
     depotController.order = order
     depotController.delegate = self
     navigationController?.pushViewController(depotController, animated: true)
   }
-  
 }
-
-
 
 
 

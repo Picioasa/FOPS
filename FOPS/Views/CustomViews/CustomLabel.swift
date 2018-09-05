@@ -10,6 +10,7 @@ import UIKit
 
 class CustomLabel: UILabel {
   
+  // MARK: - Object Lifecycle
   init(string: String = "", font: UIFont = UIFont.systemFont(ofSize: 14), color: UIColor = UIColor.black) {
     super.init(frame: .zero)
     

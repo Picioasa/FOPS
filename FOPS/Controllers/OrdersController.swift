@@ -11,29 +11,48 @@ import CoreData
 
 class OrdersController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
-  let cellId = "cellId"
+  // MARK: - Properties
+  fileprivate let searchController = UISearchController(searchResultsController: nil)
   
+  let cellId = "cellId"
+
   var orders = [Order]()
+  var filteredOrders = [Order]()
   var selectedOrderIndexPath: IndexPath?
   
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    navigationItem.title = "Orders"
     
-    setupNavigationBarButtons()
-    
+    setupNavigationBar()
+    setupCollectionView()
+    self.orders = CoreDataManager.shared.fetchOrders()
+    filteredOrders = orders
+  }
+  
+  // MARK: - Private Methods
+  private func setupCollectionView() {
     collectionView?.alwaysBounceVertical = true
     collectionView?.backgroundColor = .darkBlue
     collectionView?.register(OrdersCell.self, forCellWithReuseIdentifier: cellId)
-    
-    self.orders = CoreDataManager.shared.fetchOrders()
   }
   
-  fileprivate func setupNavigationBarButtons() {
+  private func setupNavigationBar() {
+    navigationItem.title = "Orders"
+
+    // Setup Bar Buttons
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear_white").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSettings))
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddOrder))
+
+    // Setup Search Bar
+    navigationItem.searchController = searchController
+    searchController.searchBar.barStyle = .black
+    searchController.dimsBackgroundDuringPresentation = false
+    searchController.hidesNavigationBarDuringPresentation = false
+    searchController.searchBar.delegate = self
   }
   
+  // MARK: - Handlers
   @objc private func handleSettings() {
     let alertController = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
     
@@ -42,6 +61,7 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
       
       DispatchQueue.main.async {
         self.orders = CoreDataManager.shared.fetchOrders()
+        self.filteredOrders = self.orders
         self.collectionView?.reloadData()
       }
     }))
@@ -78,11 +98,25 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
     }
     
     orders.remove(at: indexPath.item)
+    filteredOrders = orders
     collectionView?.deleteItems(at: [indexPath])
   }
 }
 
-
+// MARK: - UISearchBarDelegate
+extension OrdersController: UISearchBarDelegate {
+  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    
+    if searchText.isEmpty {
+      filteredOrders = orders
+    } else {
+      filteredOrders = self.orders.filter({ (order) -> Bool in
+        return order.name?.lowercased().contains(searchText.lowercased()) ?? false
+      })
+    }
+    collectionView?.reloadData()
+  }
+}
 
 
 

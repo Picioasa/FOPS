@@ -12,7 +12,6 @@ extension OrdersController: DepotControllerDelegate {
 
   func didModifiedOrder() {
     guard let indexPath = self.selectedOrderIndexPath else { return }
-
     collectionView?.reloadItems(at: [indexPath])
   }
 }

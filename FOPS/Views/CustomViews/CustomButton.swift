@@ -10,6 +10,7 @@ import UIKit
 
 class CustomButton: UIButton {
   
+  // MARK: - Object Lifecycle
   init(title: String, textColor: UIColor = UIColor.black, textFont: UIFont = UIFont.boldSystemFont(ofSize: 14), backgroundColor: UIColor) {
     
     super.init(frame: .zero)
@@ -18,9 +19,7 @@ class CustomButton: UIButton {
     
     self.setAttributedTitle(attributedTitle, for: .normal)
     self.backgroundColor = backgroundColor
-    
     self.layer.cornerRadius = 3
-    
   }
   
   required init?(coder aDecoder: NSCoder) {

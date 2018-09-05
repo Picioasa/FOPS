@@ -15,6 +15,7 @@ protocol DepotControllerDelegate {
 
 class DepotController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
+  // MARK: - Properties
   var order: Order?
   var selectedCells: NSMutableArray = []
   var selectedRows = Set<Int>()
@@ -31,6 +32,7 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
     return cv
   }()
   
+  // MARK: - View Lifecycle
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationItem.title = order?.name
@@ -41,6 +43,13 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
     
     navigationItem.largeTitleDisplayMode = .never
     
+    setupCollectionView()
+    setupAddingPalletsButton()
+    fetchPallets()
+  }
+  
+  // MARK: - Methods
+  private func setupCollectionView() {
     collectionView?.backgroundColor = .white
     collectionView?.alwaysBounceVertical = true
     collectionView?.allowsMultipleSelection = true
@@ -48,19 +57,16 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
     
     collectionView?.addSubview(containerView)
     containerView.anchor(top: nil, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0 , right: 0), size: .init(width: 0, height: 60))
-    
-    setupAddingPalletsButton()
-    fetchPallets()
   }
   
   fileprivate func fetchPallets() {
     guard let orderPallets = order?.pallets?.allObjects as? [Pallet] else { return }
-    
     pallets = orderPallets
   }
   
   fileprivate func setupAddingPalletsButton() {
-    //    guard let order = order else { return }
+    // TODO: - Handle Order Status
+//        guard let order = order else { return }
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(handleAddingPallet))
     
@@ -72,6 +78,7 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
     //    }
   }
   
+  // MARK: - Handlers
   @objc fileprivate func handleAddingPallet() {
     let context = CoreDataManager.shared.persistentContainer.viewContext
     let pallet = NSEntityDescription.insertNewObject(forEntityName: "Pallet", into: context) as! Pallet
@@ -97,6 +104,7 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
       weight += pallet.weight
       pallets.append(pallet)
       order?.pallets?.adding(pallet)
+      order?.activeBoxes += Int64(boxesNumber)
       delegate?.didModifiedOrder()
       collectionView?.reloadData()
     } catch let err {

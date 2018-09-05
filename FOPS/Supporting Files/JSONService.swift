@@ -49,14 +49,10 @@ struct JSONService {
         } catch let createErr {
           print("Failed to create company on background thread: \(createErr)")
         }
-        
       }
-      
-      
     } catch let decodeErr {
       print("Failed to decode json: \(decodeErr)")
     }
-    
   }
 }
 

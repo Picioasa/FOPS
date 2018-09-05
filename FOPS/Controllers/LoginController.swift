@@ -10,21 +10,30 @@ import UIKit
 
 class LoginController: UIViewController {
   
-  let loginViews = LoginViews()
+  // MARK: - Properties
+  let loginView = LoginView()
   
+  // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    view.backgroundColor = .darkBlue
-    
-    loginViews.setupViews(for: self)
-    loginViews.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+    setupView()
   }
   
+  // MARK: - Methods
   override public var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
   
+  private func setupView() {
+    view.backgroundColor = .darkBlue
+    view.addSubview(loginView)
+    
+    loginView.setupViews(for: self)
+    loginView.loginButton.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+  }
+  
+  // MARK: - Handlers
   @objc fileprivate func handleLogin() {
     let despatchOrdersController = OrdersController(collectionViewLayout: UICollectionViewFlowLayout())
     let navController = UINavigationController(rootViewController: despatchOrdersController)

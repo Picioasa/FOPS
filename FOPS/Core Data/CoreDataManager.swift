@@ -9,6 +9,8 @@
 import CoreData
 
 struct CoreDataManager {
+  
+  // MARK: - Properties
   static let shared = CoreDataManager()
   
   let persistentContainer: NSPersistentContainer = {
@@ -20,6 +22,7 @@ struct CoreDataManager {
     return container
   }()
   
+  // MARK: - Methods
   func fetchOrders() -> [Order] {
     let context = persistentContainer.viewContext
     let fetchRequest = NSFetchRequest<Order>(entityName: "Order")
