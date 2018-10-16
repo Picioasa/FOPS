@@ -38,6 +38,7 @@ class CreateOrderViews: UIView, UITextFieldDelegate {
     return tf
   }()
   
+  
   // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -45,9 +46,11 @@ class CreateOrderViews: UIView, UITextFieldDelegate {
     orderNumberTextField.delegate = self
   }
   
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   
   // MARK: - Methods
   func setupViews(for viewController: UIViewController) {

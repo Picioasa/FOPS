@@ -16,7 +16,8 @@ extension DepotController: ContainerViewDelegate {
       var boxes = 0
       var weight = 0.0
       var palletsToDespatched = 0
-      for index in selectedRows.sorted().reversed() {
+      
+      for index in selectedRows {
         boxes += Int(pallets[index].boxes)
         weight += pallets[index].weight
         palletsToDespatched += 1
@@ -25,7 +26,7 @@ extension DepotController: ContainerViewDelegate {
       let alertController = UIAlertController(title: "Confirm Despatch", message: """
         Pallets: \(palletsToDespatched)
         Boxes: \(boxes)
-        Weight: \(weight)
+        Weight: \(weight.rounded(toDecimalPlaces: 1))
         Pallets Remaining: \(pallets.count - palletsToDespatched)
         """, preferredStyle: .alert)
 
@@ -46,7 +47,7 @@ extension DepotController: ContainerViewDelegate {
           print("Failed to despatch pallets:", err)
         }
         
-        self.weight = weight
+        self.totalWeight = weight
         self.selectedRows.removeAll()
         self.selectedCells.removeAllObjects()
         self.delegate?.didModifiedOrder()
@@ -61,12 +62,13 @@ extension DepotController: ContainerViewDelegate {
     }
   }
 
+  
   func didDismantle() {
     let context = CoreDataManager.shared.persistentContainer.viewContext
 
     if selectedCells.count > 0 {
       
-      for index in selectedRows.sorted().reversed() {
+      for index in selectedRows {
         let removedPallet = pallets.remove(at: index)
         context.delete(removedPallet)
       }
@@ -84,8 +86,8 @@ extension DepotController: ContainerViewDelegate {
     collectionView?.reloadData()
   }
 
+  
   func didPrint() {
-
     let printInfo = UIPrintInfo(dictionary: nil)
     printInfo.jobName = "Vehicle Manifest"
     printInfo.outputType = .general

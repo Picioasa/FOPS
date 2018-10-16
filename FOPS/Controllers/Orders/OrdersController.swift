@@ -20,6 +20,7 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
   var filteredOrders = [Order]()
   var selectedOrderIndexPath: IndexPath?
   
+  
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,12 +31,14 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
     filteredOrders = orders
   }
   
+  
   // MARK: - Private Methods
   private func setupCollectionView() {
     collectionView?.alwaysBounceVertical = true
     collectionView?.backgroundColor = .darkBlue
     collectionView?.register(OrdersCell.self, forCellWithReuseIdentifier: cellId)
   }
+  
   
   private func setupNavigationBar() {
     navigationItem.title = "Orders"
@@ -51,6 +54,7 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
     searchController.hidesNavigationBarDuringPresentation = false
     searchController.searchBar.delegate = self
   }
+  
   
   // MARK: - Handlers
   @objc private func handleSettings() {
@@ -75,6 +79,7 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
     present(alertController, animated: true, completion: nil)
   }
   
+  
   @objc private func handleAddOrder() {
     let createOrder = CreateOrderController()
     createOrder.delegate = self
@@ -82,41 +87,19 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
     present(navController, animated: true)
   }
   
+  
   @objc func handleDelete(_ sender: UIButton) {
     guard let cell = sender.superview as? OrdersCell else { return }
     guard let indexPath = collectionView?.indexPath(for: cell) else { return }
-    
     let order = orders[indexPath.item]
     
-    let context = CoreDataManager.shared.persistentContainer.viewContext
-    context.delete(order)
-    
-    do {
-      try context.save()
-    } catch let delErr {
-      print("Failed to delete order:", delErr)
-    }
-    
+    CoreDataManager.shared.delete(order: order)
     orders.remove(at: indexPath.item)
     filteredOrders = orders
     collectionView?.deleteItems(at: [indexPath])
   }
 }
 
-// MARK: - UISearchBarDelegate
-extension OrdersController: UISearchBarDelegate {
-  func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    
-    if searchText.isEmpty {
-      filteredOrders = orders
-    } else {
-      filteredOrders = self.orders.filter({ (order) -> Bool in
-        return order.name?.lowercased().contains(searchText.lowercased()) ?? false
-      })
-    }
-    collectionView?.reloadData()
-  }
-}
 
 
 

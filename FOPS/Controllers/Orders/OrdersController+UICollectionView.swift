@@ -14,15 +14,16 @@ extension OrdersController {
     return filteredOrders.count
   }
   
+  
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! OrdersCell
     let order = filteredOrders[indexPath.item]
-    
     cell.order = order
     cell.deleteOrderButton.addTarget(self, action: #selector(handleDelete(_:)), for: .touchUpInside)
     return cell
   }
 }
+
 
 // MARK: - CollectionViewDelegate
 extension OrdersController {
@@ -30,9 +31,11 @@ extension OrdersController {
     return 1
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.frame.width, height: 114)
   }
+  
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let depotController = DepotController(collectionViewLayout: UICollectionViewFlowLayout())

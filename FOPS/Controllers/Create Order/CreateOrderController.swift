@@ -9,27 +9,29 @@
 import UIKit
 import CoreData
 
-protocol CreateOrderDelegate {
+protocol CreateOrderDelegate: class {
   func didAdd(order: Order)
 }
 
 class CreateOrderController: UIViewController {
   
   // MARK: - Properties
-  let createOrderViews = CreateOrderViews()
-  var delegate: CreateOrderDelegate?
+  private let createOrderViews = CreateOrderViews()
+  
+  weak var delegate: CreateOrderDelegate?
+  
   
   // MARK: - View Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     view.backgroundColor = .white
     
     setupNavigationBar()
     createOrderViews.setupViews(for: self)
   }
   
-  // MARK: - Methods
+  
+  // MARK: - Private Methods
   private func setupNavigationBar() {
     navigationItem.title = "Create Order"
 
@@ -37,10 +39,12 @@ class CreateOrderController: UIViewController {
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(handleCreate))
   }
   
+  
   // MARK: - Handlers
   @objc private func handleCancel() {
     dismiss(animated: true, completion: nil)
   }
+  
   
   @objc private func handleCreate() {
     let context = CoreDataManager.shared.persistentContainer.viewContext

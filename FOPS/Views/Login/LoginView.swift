@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginView: UIView, UITextFieldDelegate {
+class LoginView: UIView {
   
   // MARK: Properties
   let fopsLogoView = UIImageView(image: #imageLiteral(resourceName: "FOPS_logo"))
@@ -18,6 +18,7 @@ class LoginView: UIView, UITextFieldDelegate {
   let passwordLabel = CustomLabel(string: "Password", color: UIColor.white)
 
   let loginButton = CustomButton(title: "Login", backgroundColor: UIColor.lightGray)
+  
   
   // MARK: - Computed Properties
   let usernameTextField: UITextField = {
@@ -34,15 +35,18 @@ class LoginView: UIView, UITextFieldDelegate {
     return tf
   }()
   
+  
   // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupTextFields()
   }
   
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   
   // MARK: - Private Methods
   private func setupTextFields() {
@@ -53,6 +57,7 @@ class LoginView: UIView, UITextFieldDelegate {
     passwordTextField.isSecureTextEntry = true
     passwordTextField.addTarget(self, action: #selector(handleTextInputChange), for: .editingChanged)
   }
+  
   
   // MARK: - Methods
   func setupViews(for controller: UIViewController) {
@@ -86,11 +91,6 @@ class LoginView: UIView, UITextFieldDelegate {
     loginButton.centerXAnchor.constraint(equalTo: passwordStackView.centerXAnchor).isActive = true
   }
   
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    usernameTextField.resignFirstResponder()
-    passwordTextField.resignFirstResponder()
-    return true
-  }
   
   // MARK: - Private Handlers
   @objc fileprivate func handleTextInputChange() {
@@ -105,11 +105,6 @@ class LoginView: UIView, UITextFieldDelegate {
     }
   }
 }
-
-
-
-
-
 
 
 

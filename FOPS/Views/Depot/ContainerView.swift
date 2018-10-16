@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ContainerViewDelegate {
+protocol ContainerViewDelegate: class {
   func didDispatch()
   func didDismantle()
   func didPrint()
@@ -17,7 +17,8 @@ protocol ContainerViewDelegate {
 class ContainerView: UIView {
   
   //MARK: - Properties
-  var delegate: ContainerViewDelegate?
+  weak var delegate: ContainerViewDelegate?
+  
   
   // MARK: - Computed Properties
   fileprivate lazy var despatchButton: UIButton = {
@@ -41,15 +42,18 @@ class ContainerView: UIView {
     return button
   }()
   
+  
   // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupButtons()
   }
   
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
+  
   
   // MARK: - Private Methods
   fileprivate func setupButtons() {
@@ -67,6 +71,7 @@ class ContainerView: UIView {
     
     stackView.anchor(top: topAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 4, bottom: 4, right: 4))
   }
+  
   
   // MARK: - Private Handlers
   @objc fileprivate func handleDespatching() {

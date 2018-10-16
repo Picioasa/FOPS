@@ -10,10 +10,10 @@ import UIKit
 
 // MARK: - CollectionViewDataSource
 extension DepotController {
-  
   override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection: Int) -> Int {
     return pallets.count
   }
+  
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DepotCell
@@ -26,27 +26,29 @@ extension DepotController {
       collectionView.deselectItem(at: indexPath, animated: false)
       cell.backgroundColor = .clear
     }
-    
     return cell
   }
 }
 
+
 // MARK: - CollectionViewDelegate
 extension DepotController {
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return 0
   }
   
+  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.frame.width, height: 60)
   }
+  
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     selectedCells.add(indexPath)
     selectedRows.insert(indexPath.row)
     collectionView.reloadItems(at: [indexPath])
   }
+  
   
   override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     selectedCells.remove(indexPath)

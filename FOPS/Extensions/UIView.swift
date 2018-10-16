@@ -1,8 +1,8 @@
 //
-//  Extensions.swift
+//  UIView.swift
 //  FOPS
 //
-//  Created by Vlad Gachi on 10/03/2018.
+//  Created by Vlad Gachi on 15/10/2018.
 //  Copyright © 2018 Vlad Gachi. All rights reserved.
 //
 
@@ -40,28 +40,13 @@ extension UIView {
   }
 }
 
-extension Date: ExpressibleByStringLiteral {
-  public init(stringLiteral value: String) {
-    let formatter = DateFormatter()
-    formatter.dateFormat = "dd-mm"
-    if let date = formatter.date(from: value) {
-      self = date
-    } else {
-      self = Date()
-    }
-  }
-}
 
-extension UINavigationController {
-  open override var preferredStatusBarStyle: UIStatusBarStyle {
-    return .lightContent
-  }
-}
 
-extension UIColor {
-  static let darkBlue = UIColor(red: 39/255, green: 37/255, blue: 49/255, alpha: 1.0)
-  static let someBlue = UIColor(red: 250/255, green: 24/255, blue: 19/255, alpha: 1.0)
-}
+
+
+
+
+
 
 
 

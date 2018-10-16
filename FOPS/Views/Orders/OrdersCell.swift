@@ -24,24 +24,24 @@ class OrdersCell: UICollectionViewCell {
   fileprivate let boxesLabel = UILabel()
   fileprivate let doneLabel = UILabel()
   
+  
   // MARK: - Computed Properties
   fileprivate let statusLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
     label.numberOfLines = 0
-    let attributedText = NSMutableAttributedString(string: "Status:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    attributedText.append(NSAttributedString(string: " WIP", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular), NSAttributedStringKey.foregroundColor: UIColor.blue]))
+    let attributedText = NSMutableAttributedString.attributedText("Status", and: " WIP")
     label.attributedText = attributedText
     return label
   }()
   
   fileprivate lazy var openDepotButton: CustomButton = {
-    let btn = CustomButton(title: "+", textColor: UIColor.black, textFont: UIFont.boldSystemFont(ofSize: 24), backgroundColor: UIColor.clear)
+    let btn = CustomButton(title: "+", textFont: UIFont.boldSystemFont(ofSize: 24))
     return btn
   }()
   
   fileprivate lazy var closeDepotButton: CustomButton = {
-    let btn = CustomButton(title: "-", textColor: UIColor.black, textFont: UIFont.boldSystemFont(ofSize: 24), backgroundColor: UIColor.clear)
+    let btn = CustomButton(title: "-", textFont: UIFont.boldSystemFont(ofSize: 24))
     return btn
   }()
   
@@ -55,20 +55,22 @@ class OrdersCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor =  UIColor.init(red: 247/255, green: 247/255, blue: 246/255, alpha: 1.0)
-    setupViews()
+    setupViewsAndConstraints()
   }
+  
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
+  
   // MARK: - Private Methods
-  fileprivate func setupViews() {
-    let separatorView = UIView()
-    separatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
+  fileprivate func setupViewsAndConstraints() {
+    let middleTopSeparatorView = UIView()
+    middleTopSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
     
-    let separatorView2 = UIView()
-    separatorView2.backgroundColor = UIColor(white: 0, alpha: 0.2)
+    let middleBottomSeparatorView = UIView()
+    middleBottomSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
     
     let buttonStackView = UIStackView(arrangedSubviews: [openDepotButton, closeDepotButton])
     buttonStackView.axis = .horizontal
@@ -79,10 +81,10 @@ class OrdersCell: UICollectionViewCell {
     addSubview(orderIdLabel)
     addSubview(statusLabel)
     addSubview(buttonStackView)
-    addSubview(separatorView)
+    addSubview(middleTopSeparatorView)
     addSubview(activePalletsLabel)
     addSubview(boxesLabel)
-    addSubview(separatorView2)
+    addSubview(middleBottomSeparatorView)
     addSubview(despatchedPalletsLabel)
     addSubview(doneLabel)
     
@@ -97,37 +99,34 @@ class OrdersCell: UICollectionViewCell {
     
     buttonStackView.anchor(top: statusLabel.bottomAnchor, leading: statusLabel.leadingAnchor, bottom: nil, trailing: statusLabel.trailingAnchor, padding: .init(top: -4, left: 0, bottom: 0, right: 0))
     
-    separatorView.anchor(top: orderIdLabel.bottomAnchor, leading: orderIdLabel.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 0.5))
+    middleTopSeparatorView.anchor(top: orderIdLabel.bottomAnchor, leading: orderIdLabel.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 0.5))
     
-    activePalletsLabel.anchor(top: separatorView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 4, left: 8, bottom: 0, right: 0))
+    activePalletsLabel.anchor(top: middleTopSeparatorView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 4, left: 8, bottom: 0, right: 0))
     
-    boxesLabel.anchor(top: separatorView.bottomAnchor, leading: doneLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 4, left: 0, bottom: 0, right: 0))
+    boxesLabel.anchor(top: middleTopSeparatorView.bottomAnchor, leading: doneLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 4, left: 0, bottom: 0, right: 0))
     
-    separatorView2.anchor(top: activePalletsLabel.bottomAnchor, leading: activePalletsLabel.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 0.5))
+    middleBottomSeparatorView.anchor(top: activePalletsLabel.bottomAnchor, leading: activePalletsLabel.leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 0.5))
     
-    despatchedPalletsLabel.anchor(top: separatorView2.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 4, left: 8, bottom: 8, right: 0))
+    despatchedPalletsLabel.anchor(top: middleBottomSeparatorView.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 4, left: 8, bottom: 8, right: 0))
     
-    doneLabel.anchor(top: separatorView2.bottomAnchor, leading: despatchedPalletsLabel.trailingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 4, left: 24, bottom: 8, right: 0))
+    doneLabel.anchor(top: middleBottomSeparatorView.bottomAnchor, leading: despatchedPalletsLabel.trailingAnchor, bottom: bottomAnchor, trailing: nil, padding: .init(top: 4, left: 24, bottom: 8, right: 0))
   }
+  
   
   fileprivate func setupAttributedText() {
     guard let order = order else { return }
     
-    let orderNameAttributedText = NSMutableAttributedString(string: "\(order.name ?? "")", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+    let orderNameAttributedText = NSMutableAttributedString.attributedText("\(order.name ?? "")", weight: .semibold)
     
-    let orderIdAttributedText = NSMutableAttributedString(string: "\(order.id)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
+    let orderIdAttributedText = NSMutableAttributedString.attributedText("\(order.id)", weight: .regular)
     
-    let activePalletsAttributedText = NSMutableAttributedString(string: "Active Pallets:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    activePalletsAttributedText.append(NSAttributedString(string: " \(order.pallets?.count ?? 0)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-
-    let despathedPalletsAttributedText = NSMutableAttributedString(string: "Despatched Pallets:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    despathedPalletsAttributedText.append(NSAttributedString(string: " \(order.despatchedPallets)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
+    let activePalletsAttributedText = NSMutableAttributedString.attributedText("Active Pallets:", and: " \(order.pallets?.count ?? 0)")
     
-    let boxesAttributedText = NSMutableAttributedString(string: "Boxes:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    boxesAttributedText.append(NSAttributedString(string: " \(order.activeBoxes)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
+    let despathedPalletsAttributedText = NSMutableAttributedString.attributedText("Despathed Pallets:", and: " \(order.despatchedPallets)")
     
-    let doneAttributedText = NSMutableAttributedString(string: "Done:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    doneAttributedText.append(NSAttributedString(string: " \(order.boxesDone)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
+    let boxesAttributedText = NSMutableAttributedString.attributedText("Boxes:", and: " \(order.activeBoxes)")
+    
+    let doneAttributedText = NSMutableAttributedString.attributedText("Done:", and: " \(order.boxesDone)")
     
     orderNameLabel.attributedText = orderNameAttributedText
     orderIdLabel.attributedText = orderIdAttributedText

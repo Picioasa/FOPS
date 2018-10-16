@@ -22,28 +22,27 @@ class DepotCell: UICollectionViewCell {
   fileprivate let productLabel = UILabel()
   fileprivate let maxLifeLabel = UILabel()
   
+  
   // MARK: - Object Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
-    setupViews()
+    setupViewsAndConstraints()
   }
+  
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: - Methods
-  fileprivate func setupViews() {
-    let topSeparatorView = UIView()
-    topSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.6)
-    
+  
+  // MARK: - Private Methods
+  fileprivate func setupViewsAndConstraints() {
     let middleSeparatorView = UIView()
     middleSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
     
     let bottomSeparatorView = UIView()
     bottomSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.5)
     
-    addSubview(topSeparatorView)
     addSubview(palletNumberLabel)
     addSubview(boxesLabel)
     addSubview(middleSeparatorView)
@@ -51,7 +50,7 @@ class DepotCell: UICollectionViewCell {
     addSubview(maxLifeLabel)
     addSubview(bottomSeparatorView)
     
-    palletNumberLabel.anchor(top: topSeparatorView.bottomAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 8, bottom: 0, right: 0))
+    palletNumberLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 8, bottom: 0, right: 0))
     
     boxesLabel.anchor(top: topAnchor, leading: maxLifeLabel.leadingAnchor, bottom: nil, trailing: nil, padding: .init(top: 8, left: 0, bottom: 0, right: 0))
     
@@ -64,25 +63,22 @@ class DepotCell: UICollectionViewCell {
     bottomSeparatorView.anchor(top: nil, leading: productLabel.leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 4, left: 0, bottom: 0, right: 0), size: .init(width: 0, height: 1))
   }
   
+  
   fileprivate func setupAttributedText() {
     guard let pallet = pallet else { return }
-  
-    let numberAttributedText = NSMutableAttributedString(string: "Pallet Number:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    numberAttributedText.append(NSAttributedString(string: " \(String(pallet.number))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-
-    let boxesAttributedText = NSMutableAttributedString(string: "Boxes:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    boxesAttributedText.append(NSAttributedString(string: " \(String(pallet.boxes))", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-
-    let productAttributedText = NSMutableAttributedString(string: "Product:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-    productAttributedText.append(NSAttributedString(string: " \(pallet.product ?? "")", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-
-    let maxLifeAttributedText = NSMutableAttributedString(string: "Max Life:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .light)])
-
+    
+    let numberAttributedText = NSMutableAttributedString.attributedText("Pallet Number:", and: " \(String(pallet.number))")
+    
+    let boxesAttributedText = NSMutableAttributedString.attributedText("Boxes", and: " \(String(pallet.boxes))")
+    
+    let productAttributedText = NSMutableAttributedString.attributedText("Product:", and: " \(pallet.product ?? "")")
+    
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "MMM dd, yyyy"
-    let date = dateFormatter.string(from: pallet.date ?? "")
-    maxLifeAttributedText.append(NSAttributedString(string: " \(date)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .regular)]))
-
+    let stringDate = dateFormatter.string(from: pallet.date ?? "")
+    
+    let maxLifeAttributedText = NSMutableAttributedString.attributedText("Max Life:", and:  " \(stringDate)")
+    
     palletNumberLabel.attributedText = numberAttributedText
     boxesLabel.attributedText = boxesAttributedText
     productLabel.attributedText = productAttributedText

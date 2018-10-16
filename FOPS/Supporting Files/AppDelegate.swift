@@ -13,25 +13,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
     UINavigationBar.appearance().isTranslucent = false
     UINavigationBar.appearance().tintColor = .white
     UINavigationBar.appearance().barTintColor = .darkBlue
     UINavigationBar.appearance().prefersLargeTitles = true
-    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
-    UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+    UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     
-    window = UIWindow()
-    window?.makeKeyAndVisible()
+    self.window = UIWindow()
+    self.window?.makeKeyAndVisible()
     
     let despatchOrdersController = OrdersController(collectionViewLayout: UICollectionViewFlowLayout())
     let navController = UINavigationController(rootViewController: despatchOrdersController)
+    self.window?.rootViewController = navController
     
-    window?.rootViewController = navController
-    
-    //    let loginViewController = LoginController()
-    //    window?.rootViewController = loginViewController
+//    let loginViewController = LoginController()
+//    window?.rootViewController = loginViewController
     
     return true
   }
