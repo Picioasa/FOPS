@@ -17,7 +17,7 @@ extension DepotController: ContainerViewDelegate {
       var weight = 0.0
       var palletsToDespatched = 0
       
-      for index in selectedRows {
+      for index in selectedRows.sorted().reversed() {
         boxes += Int(pallets[index].boxes)
         weight += pallets[index].weight
         palletsToDespatched += 1
@@ -68,7 +68,7 @@ extension DepotController: ContainerViewDelegate {
 
     if selectedCells.count > 0 {
       
-      for index in selectedRows {
+      for index in selectedRows.sorted().reversed() {
         let removedPallet = pallets.remove(at: index)
         context.delete(removedPallet)
       }

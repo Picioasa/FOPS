@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreateOrderViews: UIView, UITextFieldDelegate {
+class CreateOrderViews: UIView {
   
   // MARK: - Properties
   let backgroundView: UIView = {
@@ -23,7 +23,7 @@ class CreateOrderViews: UIView, UITextFieldDelegate {
     let tf = UITextField()
     tf.borderStyle = .roundedRect
     tf.returnKeyType = .done
-    tf.placeholder = "Enter Name"
+    tf.placeholder = "Order Name"
     return tf
   }()
   
@@ -32,9 +32,9 @@ class CreateOrderViews: UIView, UITextFieldDelegate {
   let orderNumberTextField: UITextField = {
     let tf = UITextField()
     tf.borderStyle = .roundedRect
+    tf.placeholder = "Order Number"
+    tf.keyboardType = .numbersAndPunctuation
     tf.returnKeyType = .done
-    tf.placeholder = "Enter Order Number"
-    tf.keyboardType = .numberPad
     return tf
   }()
   

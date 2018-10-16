@@ -22,12 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     UINavigationBar.appearance().largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     
-    self.window = UIWindow()
-    self.window?.makeKeyAndVisible()
+    window = UIWindow()
+    window?.makeKeyAndVisible()
     
     let despatchOrdersController = OrdersController(collectionViewLayout: UICollectionViewFlowLayout())
     let navController = UINavigationController(rootViewController: despatchOrdersController)
-    self.window?.rootViewController = navController
+    window?.rootViewController = navController
     
 //    let loginViewController = LoginController()
 //    window?.rootViewController = loginViewController
