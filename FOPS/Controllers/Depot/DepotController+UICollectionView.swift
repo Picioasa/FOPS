@@ -16,7 +16,7 @@ extension DepotController {
   
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! DepotCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .depotControllerCellId, for: indexPath) as! DepotCell
     cell.pallet = pallets[indexPath.item]
     
     if selectedCells.contains(indexPath) {

@@ -1,5 +1,5 @@
 ////
-//  ContainerView.swift
+//  DepotContainerView.swift
 //  FOPS
 //
 //  Created by Vlad Gachi on 23/05/2018.
@@ -14,7 +14,7 @@ protocol ContainerViewDelegate: class {
   func didPrint()
 }
 
-class ContainerView: UIView {
+class DepotContainerView: UIView {
   
   //MARK: - Properties
   weak var delegate: ContainerViewDelegate?

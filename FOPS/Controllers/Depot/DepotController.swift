@@ -24,10 +24,9 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
   
   weak var delegate: DepotControllerDelegate?
   
-  let cellId = "cellId"
   
-  fileprivate lazy var containerView: ContainerView = {
-    let cv = ContainerView()
+  fileprivate lazy var containerView: DepotContainerView = {
+    let cv = DepotContainerView()
     cv.delegate = self
     cv.backgroundColor = .white
     return cv
@@ -55,7 +54,7 @@ class DepotController: UICollectionViewController, UICollectionViewDelegateFlowL
     collectionView?.backgroundColor = .white
     collectionView?.alwaysBounceVertical = true
     collectionView?.allowsMultipleSelection = true
-    collectionView?.register(DepotCell.self, forCellWithReuseIdentifier: cellId)
+    collectionView?.register(DepotCell.self, forCellWithReuseIdentifier: .depotControllerCellId)
     
     collectionView?.addSubview(containerView)
     containerView.anchor(top: nil, leading: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.bottomAnchor, trailing: view.safeAreaLayoutGuide.trailingAnchor, padding: .init(top: 0, left: 0, bottom: 0 , right: 0), size: .init(width: 0, height: 60))

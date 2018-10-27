@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6B20E05620B5D997005479C4 /* DepotCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B20E05520B5D997005479C4 /* DepotCell.swift */; };
-		6B20E05820B5E765005479C4 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B20E05720B5E765005479C4 /* ContainerView.swift */; };
+		6B20E05820B5E765005479C4 /* DepotContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B20E05720B5E765005479C4 /* DepotContainerView.swift */; };
 		6B236FE120F152F000C348CC /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FDE20F152F000C348CC /* CoreDataManager.swift */; };
 		6B236FE220F152F000C348CC /* FopsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FDF20F152F000C348CC /* FopsModel.xcdatamodeld */; };
 		6B236FE420F1530900C348CC /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FE320F1530900C348CC /* LoginView.swift */; };
@@ -28,6 +28,7 @@
 		6B399B742175CF7400D8E77D /* LoginView+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B399B732175CF7400D8E77D /* LoginView+UITextFieldDelegate.swift */; };
 		6B399B762175D76300D8E77D /* CreateOrderViews+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B399B752175D76300D8E77D /* CreateOrderViews+UITextFieldDelegate.swift */; };
 		6B4930AA206FF31C00E5BB27 /* OrdersController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4930A9206FF31C00E5BB27 /* OrdersController.swift */; };
+		6B4D88962184708200AD9639 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4D88952184708200AD9639 /* String.swift */; };
 		6B66795620728D4800D72D14 /* OrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B66795520728D4800D72D14 /* OrdersCell.swift */; };
 		6B88175B20F913E800B6B6CC /* JSONService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88175A20F913E800B6B6CC /* JSONService.swift */; };
 		6B88175D20F9217800B6B6CC /* depots.json in Resources */ = {isa = PBXBuildFile; fileRef = 6B88175C20F9217800B6B6CC /* depots.json */; };
@@ -44,7 +45,7 @@
 
 /* Begin PBXFileReference section */
 		6B20E05520B5D997005479C4 /* DepotCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotCell.swift; sourceTree = "<group>"; };
-		6B20E05720B5E765005479C4 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		6B20E05720B5E765005479C4 /* DepotContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotContainerView.swift; sourceTree = "<group>"; };
 		6B236FDE20F152F000C348CC /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		6B236FE020F152F000C348CC /* FopsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FopsModel.xcdatamodel; sourceTree = "<group>"; };
 		6B236FE320F1530900C348CC /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -64,6 +65,7 @@
 		6B399B732175CF7400D8E77D /* LoginView+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginView+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		6B399B752175D76300D8E77D /* CreateOrderViews+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreateOrderViews+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		6B4930A9206FF31C00E5BB27 /* OrdersController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersController.swift; sourceTree = "<group>"; };
+		6B4D88952184708200AD9639 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		6B66795520728D4800D72D14 /* OrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrdersCell.swift; sourceTree = "<group>"; };
 		6B88175A20F913E800B6B6CC /* JSONService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONService.swift; sourceTree = "<group>"; };
 		6B88175C20F9217800B6B6CC /* depots.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = depots.json; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				6B399B682174ED4800D8E77D /* UINavigationController.swift */,
 				6B399B622174ECAF00D8E77D /* UIView.swift */,
 				6B399B712175CAE200D8E77D /* NSMutableAttributedString.swift */,
+				6B4D88952184708200AD9639 /* String.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -221,7 +224,7 @@
 			isa = PBXGroup;
 			children = (
 				6B20E05520B5D997005479C4 /* DepotCell.swift */,
-				6B20E05720B5E765005479C4 /* ContainerView.swift */,
+				6B20E05720B5E765005479C4 /* DepotContainerView.swift */,
 			);
 			path = Depot;
 			sourceTree = "<group>";
@@ -350,10 +353,11 @@
 				6B33E60B20F151FD00722DC3 /* DepotController+UICollectionView.swift in Sources */,
 				6BE8AF192053FDA300E333D2 /* LoginController.swift in Sources */,
 				6B8EBB2220B48D95009C2092 /* DepotController.swift in Sources */,
-				6B20E05820B5E765005479C4 /* ContainerView.swift in Sources */,
+				6B20E05820B5E765005479C4 /* DepotContainerView.swift in Sources */,
 				6B399B762175D76300D8E77D /* CreateOrderViews+UITextFieldDelegate.swift in Sources */,
 				6BA89589205400970023B0A7 /* Double.swift in Sources */,
 				6BDEA58A212F399F006260AF /* CustomLabel.swift in Sources */,
+				6B4D88962184708200AD9639 /* String.swift in Sources */,
 				6B399B652174ECD300D8E77D /* UIColor.swift in Sources */,
 				6BE8AF172053FDA300E333D2 /* AppDelegate.swift in Sources */,
 				6B236FE120F152F000C348CC /* CoreDataManager.swift in Sources */,

@@ -14,8 +14,6 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
   // MARK: - Properties
   fileprivate let searchController = UISearchController(searchResultsController: nil)
   
-  let cellId = "cellId"
-
   var orders = [Order]()
   var filteredOrders = [Order]()
   var selectedOrderIndexPath: IndexPath?
@@ -36,7 +34,7 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
   private func setupCollectionView() {
     collectionView?.alwaysBounceVertical = true
     collectionView?.backgroundColor = .darkBlue
-    collectionView?.register(OrdersCell.self, forCellWithReuseIdentifier: cellId)
+    collectionView?.register(OrdersCell.self, forCellWithReuseIdentifier: .ordersControllerCellId)
   }
   
   

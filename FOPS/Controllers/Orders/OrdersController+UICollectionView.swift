@@ -16,7 +16,7 @@ extension OrdersController {
   
   
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! OrdersCell
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .ordersControllerCellId, for: indexPath) as! OrdersCell
     let order = filteredOrders[indexPath.item]
     cell.order = order
     cell.deleteOrderButton.addTarget(self, action: #selector(handleDelete(_:)), for: .touchUpInside)
