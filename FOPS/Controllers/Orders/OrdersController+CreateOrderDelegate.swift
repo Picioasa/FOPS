@@ -10,6 +10,7 @@ import Foundation
 
 extension OrdersController: CreateOrderDelegate {
   func didAdd(order: Order) {
+    // Adds a new order
     orders.append(order)
     filteredOrders = orders
     

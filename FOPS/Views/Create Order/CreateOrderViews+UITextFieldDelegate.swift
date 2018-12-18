@@ -10,7 +10,7 @@ import UIKit
 
 extension CreateOrderViews: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    
+    // Switch to the next textField upon hitting done button
     if textField == orderNameTextField {
       orderNameTextField.resignFirstResponder()
       orderNumberTextField.becomeFirstResponder()

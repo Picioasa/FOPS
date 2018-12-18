@@ -15,6 +15,7 @@ struct CoreDataManager {
   
   let persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "FopsModel")
+    
     container.loadPersistentStores(completionHandler: { (storeDescription, err) in
       if let err = err { fatalError("Failed to load store: \(err)") }
     })
@@ -22,10 +23,11 @@ struct CoreDataManager {
   }()
   
   
-  // MARK: - Methods
-  func fetchOrders() -> [Order] {
-    let context = persistentContainer.viewContext
-    let fetchRequest = NSFetchRequest<Order>(entityName: "Order")
+  // MARK: - Public Methods
+  public func fetchOrders() -> [Order] {
+    let context       = persistentContainer.viewContext
+    let fetchRequest  = NSFetchRequest<Order>(entityName: "Order")
+    
     do {
       let orders = try context.fetch(fetchRequest)
       return orders
@@ -36,9 +38,9 @@ struct CoreDataManager {
   }
   
   
-  func delete(order: Order) {
+  public func delete(order: Order) {
     let context = persistentContainer.viewContext
-    
+  
     context.delete(order)
     
     do {
@@ -49,21 +51,23 @@ struct CoreDataManager {
   }
 
   
-  func addPallet(for order: Order) -> Pallet? {
-    let context = persistentContainer.viewContext
-    let pallet = NSEntityDescription.insertNewObject(forEntityName: "Pallet", into: context) as! Pallet
+  public func addPallet(for order: Order) -> Pallet? {
+    let context   = persistentContainer.viewContext
+    let pallet    = NSEntityDescription.insertNewObject(forEntityName: "Pallet", into: context) as! Pallet
     
-    pallet.order = order
+    pallet.order  = order
     
-    let palletNumber = Int.random(in: 1...100)
-    let boxesNumber = Int.random(in: 3...135)
-    let products = ["TAF5254D", "TAF3000D", "TAB6478D", "TAF5704D", "TAB0373D", "TAB4722D", "TAB6843D", "TAB3941D", "TAB8867D", "TAF1793D", "TAB9865D", "TAB8297D"]
+    let palletNumber  = Int.random(in: 1...100)
+    let boxesNumber   = Int.random(in: 3...135)
+    let products      = ["TAF5254D", "TAF3000D", "TAB6478D", "TAF5704D", "TAB0373D",
+                         "TAB4722D", "TAB6843D", "TAB3941D", "TAB8867D", "TAF1793D",
+                         "TAB9865D", "TAB8297D"]
     let randomProduct = Int.random(in: 0..<products.count)
     
     let sevenDaysInSeconds = TimeInterval(604800)
     
     let currentDate = Date()
-    let date = currentDate.addingTimeInterval(sevenDaysInSeconds)
+    let date        = currentDate.addingTimeInterval(sevenDaysInSeconds)
     
     pallet.setValue(palletNumber, forKey: "number")
     pallet.setValue(boxesNumber, forKey: "boxes")

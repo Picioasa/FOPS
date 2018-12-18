@@ -11,37 +11,23 @@ import UIKit
 class LoginView: UIView {
   
   // MARK: Properties
-  let fopsLogoView = UIImageView(image: #imageLiteral(resourceName: "FOPS_logo"))
-  let fopsTitleView = UIImageView(image: #imageLiteral(resourceName: "FOPS_title"))
+  private let fopsLogoView  = UIImageView(image: #imageLiteral(resourceName: "FOPS_logo"))
+  private let fopsTitleView = UIImageView(image: #imageLiteral(resourceName: "FOPS_title"))
 
-  let usernameLabel = CustomLabel(string: "User Name", color: UIColor.white)
-  let passwordLabel = CustomLabel(string: "Password", color: UIColor.white)
-
-  let loginButton = CustomButton(title: "Login", backgroundColor: UIColor.lightGray)
+  private let usernameLabel = UILabel.createLabelWith(text: "User Name", color: .white)
+  private let passwordLabel = UILabel.createLabelWith(text: "Password", color: .white)
+  
+  public let usernameTextField = UITextField.createTextFieldWith(placeholder: "")
+  public let passwordTextField = UITextField.createTextFieldWith(placeholder: "")
+  
+  public let loginButton = UIButton.createButtonWith(title: "Login", backgroundColor: .lightGray)
   
   
-  // MARK: - Computed Properties
-  let usernameTextField: UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .roundedRect
-    tf.returnKeyType = .done
-    return tf
-  }()
-  
-  let passwordTextField: UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .roundedRect
-    tf.returnKeyType = .done
-    return tf
-  }()
-  
-  
-  // MARK: - Object Lifecycle
+  // MARK: - View Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupTextFields()
   }
-  
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -59,15 +45,15 @@ class LoginView: UIView {
   }
   
   
-  // MARK: - Methods
-  func setupViews(for controller: UIViewController) {
-    let usernameStackView = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField])
-    usernameStackView.distribution = .fillEqually
-    usernameStackView.spacing = -90
+  // MARK: - Public Methods
+  public func setupViews(for controller: UIViewController) {
+    let usernameStackView           = UIStackView(arrangedSubviews: [usernameLabel, usernameTextField])
+    usernameStackView.distribution  = .fillEqually
+    usernameStackView.spacing       = -90
 
-    let passwordStackView = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
-    passwordStackView.distribution = .fillEqually
-    passwordStackView.spacing = -90
+    let passwordStackView           = UIStackView(arrangedSubviews: [passwordLabel, passwordTextField])
+    passwordStackView.distribution  = .fillEqually
+    passwordStackView.spacing       = -90
 
     controller.view.addSubview(fopsLogoView)
     controller.view.addSubview(fopsTitleView)
@@ -92,9 +78,10 @@ class LoginView: UIView {
   }
   
   
-  // MARK: - Private Handlers
-  @objc fileprivate func handleTextInputChange() {
-    let isFormValid = usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
+  // MARK: - Handlers
+  @objc private func handleTextInputChange() {
+    let isFormValid = usernameTextField.text?.count ?? 0 > 0 &&
+                      passwordTextField.text?.count ?? 0 > 0
 
     if isFormValid {
       loginButton.isEnabled = true

@@ -18,6 +18,10 @@
 		6B236FEE20F1532B00C348CC /* CreateOrderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FEC20F1532B00C348CC /* CreateOrderController.swift */; };
 		6B236FEF20F1532B00C348CC /* CreateOrderViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FED20F1532B00C348CC /* CreateOrderViews.swift */; };
 		6B236FF120F153F300C348CC /* DepotController+ContainerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B236FF020F153F300C348CC /* DepotController+ContainerViewDelegate.swift */; };
+		6B2CF8D221C91BF6003C5B5C /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CF8D121C91BF6003C5B5C /* UILabel.swift */; };
+		6B2CF8D421C91CCF003C5B5C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CF8D321C91CCF003C5B5C /* UITextField.swift */; };
+		6B2CF8D621C92142003C5B5C /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CF8D521C92142003C5B5C /* UIButton.swift */; };
+		6B2CF8DA21C92803003C5B5C /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B2CF8D921C92803003C5B5C /* Bundle.swift */; };
 		6B33E60B20F151FD00722DC3 /* DepotController+UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B33E60A20F151FD00722DC3 /* DepotController+UICollectionView.swift */; };
 		6B399B632174ECAF00D8E77D /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B399B622174ECAF00D8E77D /* UIView.swift */; };
 		6B399B652174ECD300D8E77D /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B399B642174ECD300D8E77D /* UIColor.swift */; };
@@ -35,8 +39,6 @@
 		6B8EBB2220B48D95009C2092 /* DepotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B8EBB2120B48D95009C2092 /* DepotController.swift */; };
 		6BA89589205400970023B0A7 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA89588205400970023B0A7 /* Double.swift */; };
 		6BACF36C21400C9B004F736F /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BACF36B21400C9B004F736F /* Colors.xcassets */; };
-		6BDEA58A212F399F006260AF /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDEA589212F399F006260AF /* CustomLabel.swift */; };
-		6BDEA58E212F404E006260AF /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BDEA58D212F404E006260AF /* CustomButton.swift */; };
 		6BE8AF172053FDA300E333D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8AF162053FDA300E333D2 /* AppDelegate.swift */; };
 		6BE8AF192053FDA300E333D2 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE8AF182053FDA300E333D2 /* LoginController.swift */; };
 		6BE8AF1E2053FDA300E333D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6BE8AF1D2053FDA300E333D2 /* Assets.xcassets */; };
@@ -55,6 +57,10 @@
 		6B236FEC20F1532B00C348CC /* CreateOrderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderController.swift; sourceTree = "<group>"; };
 		6B236FED20F1532B00C348CC /* CreateOrderViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateOrderViews.swift; sourceTree = "<group>"; };
 		6B236FF020F153F300C348CC /* DepotController+ContainerViewDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DepotController+ContainerViewDelegate.swift"; sourceTree = "<group>"; };
+		6B2CF8D121C91BF6003C5B5C /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		6B2CF8D321C91CCF003C5B5C /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
+		6B2CF8D521C92142003C5B5C /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
+		6B2CF8D921C92803003C5B5C /* Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
 		6B33E60A20F151FD00722DC3 /* DepotController+UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DepotController+UICollectionView.swift"; sourceTree = "<group>"; };
 		6B399B622174ECAF00D8E77D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		6B399B642174ECD300D8E77D /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -72,8 +78,6 @@
 		6B8EBB2120B48D95009C2092 /* DepotController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotController.swift; sourceTree = "<group>"; };
 		6BA89588205400970023B0A7 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		6BACF36B21400C9B004F736F /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
-		6BDEA589212F399F006260AF /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
-		6BDEA58D212F404E006260AF /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		6BE8AF132053FDA300E333D2 /* FOPS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FOPS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BE8AF162053FDA300E333D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6BE8AF182053FDA300E333D2 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -97,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				6BACE6512130700500CD3767 /* Create Order */,
-				6BACE64D2130403900CD3767 /* CustomViews */,
 				6BACE6522130798100CD3767 /* Depot */,
 				6BACE64E2130404900CD3767 /* Login */,
 				6BACE64F2130405200CD3767 /* Orders */,
@@ -117,13 +120,17 @@
 		6B399B602174EC9700D8E77D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				6B399B662174ED0200D8E77D /* Date.swift */,
-				6BA89588205400970023B0A7 /* Double.swift */,
-				6B399B642174ECD300D8E77D /* UIColor.swift */,
 				6B399B682174ED4800D8E77D /* UINavigationController.swift */,
 				6B399B622174ECAF00D8E77D /* UIView.swift */,
+				6B2CF8D121C91BF6003C5B5C /* UILabel.swift */,
+				6B2CF8D321C91CCF003C5B5C /* UITextField.swift */,
+				6B2CF8D521C92142003C5B5C /* UIButton.swift */,
+				6B399B642174ECD300D8E77D /* UIColor.swift */,
+				6B399B662174ED0200D8E77D /* Date.swift */,
+				6BA89588205400970023B0A7 /* Double.swift */,
 				6B399B712175CAE200D8E77D /* NSMutableAttributedString.swift */,
 				6B4D88952184708200AD9639 /* String.swift */,
+				6B2CF8D921C92803003C5B5C /* Bundle.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -183,15 +190,6 @@
 				6B399B6C2174EDE600D8E77D /* Orders */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		6BACE64D2130403900CD3767 /* CustomViews */ = {
-			isa = PBXGroup;
-			children = (
-				6BDEA589212F399F006260AF /* CustomLabel.swift */,
-				6BDEA58D212F404E006260AF /* CustomButton.swift */,
-			);
-			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		6BACE64E2130404900CD3767 /* Login */ = {
@@ -346,26 +344,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B66795620728D4800D72D14 /* OrdersCell.swift in Sources */,
+				6B2CF8DA21C92803003C5B5C /* Bundle.swift in Sources */,
 				6B399B692174ED4800D8E77D /* UINavigationController.swift in Sources */,
 				6B20E05620B5D997005479C4 /* DepotCell.swift in Sources */,
+				6B2CF8D621C92142003C5B5C /* UIButton.swift in Sources */,
 				6B399B632174ECAF00D8E77D /* UIView.swift in Sources */,
 				6B236FE420F1530900C348CC /* LoginView.swift in Sources */,
+				6B2CF8D221C91BF6003C5B5C /* UILabel.swift in Sources */,
 				6B33E60B20F151FD00722DC3 /* DepotController+UICollectionView.swift in Sources */,
 				6BE8AF192053FDA300E333D2 /* LoginController.swift in Sources */,
 				6B8EBB2220B48D95009C2092 /* DepotController.swift in Sources */,
 				6B20E05820B5E765005479C4 /* DepotContainerView.swift in Sources */,
 				6B399B762175D76300D8E77D /* CreateOrderViews+UITextFieldDelegate.swift in Sources */,
 				6BA89589205400970023B0A7 /* Double.swift in Sources */,
-				6BDEA58A212F399F006260AF /* CustomLabel.swift in Sources */,
 				6B4D88962184708200AD9639 /* String.swift in Sources */,
 				6B399B652174ECD300D8E77D /* UIColor.swift in Sources */,
 				6BE8AF172053FDA300E333D2 /* AppDelegate.swift in Sources */,
 				6B236FE120F152F000C348CC /* CoreDataManager.swift in Sources */,
 				6B236FEE20F1532B00C348CC /* CreateOrderController.swift in Sources */,
 				6B236FE220F152F000C348CC /* FopsModel.xcdatamodeld in Sources */,
+				6B2CF8D421C91CCF003C5B5C /* UITextField.swift in Sources */,
 				6B236FEA20F1531600C348CC /* OrdersController+CreateOrderDelegate.swift in Sources */,
 				6B88175B20F913E800B6B6CC /* JSONService.swift in Sources */,
-				6BDEA58E212F404E006260AF /* CustomButton.swift in Sources */,
 				6B399B742175CF7400D8E77D /* LoginView+UITextFieldDelegate.swift in Sources */,
 				6B399B702175C77600D8E77D /* OrdersController+UISearchBarDelegate.swift in Sources */,
 				6B236FE920F1531600C348CC /* OrdersController+UICollectionView.swift in Sources */,

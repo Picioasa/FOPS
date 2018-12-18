@@ -14,7 +14,6 @@ extension DepotController {
     return pallets.count
   }
   
-  
   override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .depotControllerCellId, for: indexPath) as! DepotCell
     cell.pallet = pallets[indexPath.item]
@@ -37,18 +36,15 @@ extension DepotController {
     return 0
   }
   
-  
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     return CGSize(width: view.frame.width, height: 60)
   }
-  
   
   override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     selectedCells.add(indexPath)
     selectedRows.insert(indexPath.row)
     collectionView.reloadItems(at: [indexPath])
   }
-  
   
   override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
     selectedCells.remove(indexPath)

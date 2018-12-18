@@ -16,9 +16,9 @@ protocol CreateOrderDelegate: class {
 class CreateOrderController: UIViewController {
   
   // MARK: - Properties
+  weak public var delegate: CreateOrderDelegate?
+
   private let createOrderViews = CreateOrderViews()
-  
-  weak var delegate: CreateOrderDelegate?
   
   
   // MARK: - View Lifecycle
@@ -33,9 +33,8 @@ class CreateOrderController: UIViewController {
   
   // MARK: - Private Methods
   private func setupNavigationBar() {
-    navigationItem.title = "Create Order"
-
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
+    navigationItem.title              = "Create Order"
+    navigationItem.leftBarButtonItem  = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(handleCreate))
   }
   
@@ -48,7 +47,7 @@ class CreateOrderController: UIViewController {
   
   @objc private func handleCreate() {
     let context = CoreDataManager.shared.persistentContainer.viewContext
-    let order = NSEntityDescription.insertNewObject(forEntityName: "Order", into: context)
+    let order   = NSEntityDescription.insertNewObject(forEntityName: "Order", into: context)
     
     order.setValue(createOrderViews.orderNameTextField.text, forKey: "name")
     order.setValue(Int(createOrderViews.orderNumberTextField.text ?? ""), forKey: "id")

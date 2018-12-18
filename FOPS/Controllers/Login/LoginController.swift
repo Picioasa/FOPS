@@ -11,22 +11,20 @@ import UIKit
 class LoginController: UIViewController {
   
   // MARK: - Properties
-  let loginView = LoginView()
+  private let loginView = LoginView()
   
   
-  // MARK: - View Lifecycle
+  // MARK: - Controller Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
     setupView()
   }
   
-  
-  // MARK: - Methods
   override public var preferredStatusBarStyle: UIStatusBarStyle {
     return .lightContent
   }
   
-  
+  // MARK: - Private Methods
   private func setupView() {
     view.backgroundColor = .darkBlue
     view.addSubview(loginView)
@@ -37,9 +35,9 @@ class LoginController: UIViewController {
   
   
   // MARK: - Handlers
-  @objc fileprivate func handleLogin() {
-    let despatchOrdersController = OrdersController(collectionViewLayout: UICollectionViewFlowLayout())
-    let navController = UINavigationController(rootViewController: despatchOrdersController)
+  @objc private func handleLogin() {
+    let despatchOrdersController  = OrdersController(collectionViewLayout: UICollectionViewFlowLayout())
+    let navController             = UINavigationController(rootViewController: despatchOrdersController)
     present(navController, animated: true, completion: nil)
   }
 }

@@ -11,49 +11,29 @@ import UIKit
 class CreateOrderViews: UIView {
   
   // MARK: - Properties
-  let backgroundView: UIView = {
-    let view = UIView()
-    view.backgroundColor = UIColor.init(red: 247/255, green: 247/255, blue: 246/255, alpha: 1.0)
-    return view
-  }()
+  private let backgroundView      = UIView.backgroundView
   
-  let orderNameLabel = CustomLabel(string: "Name", font: UIFont.boldSystemFont(ofSize: 14))
+  private let orderNameLabel      = UILabel.createLabelWith(text: "Name", font: .boldSystemFont(ofSize: 14))
+  public let orderNameTextField   = UITextField.orderNameTextField
   
-  let orderNameTextField: UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .roundedRect
-    tf.returnKeyType = .done
-    tf.placeholder = "Order Name"
-    return tf
-  }()
-  
-  let orderNumberLabel = CustomLabel(string: "Id", font: UIFont.boldSystemFont(ofSize: 14))
-  
-  let orderNumberTextField: UITextField = {
-    let tf = UITextField()
-    tf.borderStyle = .roundedRect
-    tf.placeholder = "Order Number"
-    tf.keyboardType = .numbersAndPunctuation
-    tf.returnKeyType = .done
-    return tf
-  }()
+  private let orderNumberLabel    = UILabel.createLabelWith(text: "Id", font: .boldSystemFont(ofSize: 14))
+  public let orderNumberTextField = UITextField.orderNumberTextField
   
   
-  // MARK: - Object Lifecycle
+  // MARK: - View Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     orderNameTextField.delegate = self
     orderNumberTextField.delegate = self
   }
   
-  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
   
   
-  // MARK: - Methods
-  func setupViews(for viewController: UIViewController) {
+  // MARK: - Public Methods
+  public func setupViews(for viewController: UIViewController) {
     viewController.view.addSubview(backgroundView)
     viewController.view.addSubview(orderNameLabel)
     viewController.view.addSubview(orderNameTextField)

@@ -17,16 +17,17 @@ class OrdersCell: UICollectionViewCell {
     }
   }
   
-  fileprivate let orderNameLabel = UILabel()
-  fileprivate let orderIdLabel = UILabel()
-  fileprivate let activePalletsLabel = UILabel()
-  fileprivate let despatchedPalletsLabel = UILabel()
-  fileprivate let boxesLabel = UILabel()
-  fileprivate let doneLabel = UILabel()
+  private let orderNameLabel          = UILabel()
+  private let orderIdLabel            = UILabel()
+  private let activePalletsLabel      = UILabel()
+  private let despatchedPalletsLabel  = UILabel()
+  private let boxesLabel              = UILabel()
+  private let doneLabel               = UILabel()
   
+  private lazy var openDepotButton = UIButton.createButtonWith(title: "+", font: .boldSystemFont(ofSize: 24))
+  private lazy var closeDepotButton = UIButton.createButtonWith(title: "-", font: .boldSystemFont(ofSize: 24))
   
-  // MARK: - Computed Properties
-  fileprivate let statusLabel: UILabel = {
+  private let statusLabel: UILabel = {
     let label = UILabel()
     label.textAlignment = .center
     label.numberOfLines = 0
@@ -35,29 +36,15 @@ class OrdersCell: UICollectionViewCell {
     return label
   }()
   
-  fileprivate lazy var openDepotButton: CustomButton = {
-    let btn = CustomButton(title: "+", textFont: UIFont.boldSystemFont(ofSize: 24))
-    return btn
-  }()
+  public lazy var deleteOrderButton = UIButton.createButtonWith(image: #imageLiteral(resourceName: "Delete"))
   
-  fileprivate lazy var closeDepotButton: CustomButton = {
-    let btn = CustomButton(title: "-", textFont: UIFont.boldSystemFont(ofSize: 24))
-    return btn
-  }()
   
-  lazy var deleteOrderButton: UIButton = {
-    let button = UIButton(type: .system)
-    button.setImage(#imageLiteral(resourceName: "Delete").withRenderingMode(.alwaysOriginal), for: .normal)
-    return button
-  }()
-  
-  // MARK: - Object Lifecycle
+  // MARK: - View Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor =  UIColor.init(red: 247/255, green: 247/255, blue: 246/255, alpha: 1.0)
     setupViewsAndConstraints()
   }
-  
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -65,16 +52,14 @@ class OrdersCell: UICollectionViewCell {
   
   
   // MARK: - Private Methods
-  fileprivate func setupViewsAndConstraints() {
-    let middleTopSeparatorView = UIView()
-    middleTopSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
+  private func setupViewsAndConstraints() {
+    let viewColor                 = UIColor(white: 0, alpha: 0.2)
+    let middleTopSeparatorView    = UIView.createViewWith(color: viewColor)
+    let middleBottomSeparatorView = UIView.createViewWith(color: viewColor)
     
-    let middleBottomSeparatorView = UIView()
-    middleBottomSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
-    
-    let buttonStackView = UIStackView(arrangedSubviews: [openDepotButton, closeDepotButton])
-    buttonStackView.axis = .horizontal
-    buttonStackView.distribution = .fillEqually
+    let buttonStackView           = UIStackView(arrangedSubviews: [openDepotButton, closeDepotButton])
+    buttonStackView.axis          = .horizontal
+    buttonStackView.distribution  = .fillEqually
     
     addSubview(orderNameLabel)
     addSubview(deleteOrderButton)
@@ -113,7 +98,7 @@ class OrdersCell: UICollectionViewCell {
   }
   
   
-  fileprivate func setupAttributedText() {
+  private func setupAttributedText() {
     guard let order = order else { return }
     
     let orderNameAttributedText = NSMutableAttributedString.attributedText("\(order.name ?? "")", weight: .semibold)
@@ -128,12 +113,12 @@ class OrdersCell: UICollectionViewCell {
     
     let doneAttributedText = NSMutableAttributedString.attributedText("Done:", and: " \(order.boxesDone)")
     
-    orderNameLabel.attributedText = orderNameAttributedText
-    orderIdLabel.attributedText = orderIdAttributedText
-    activePalletsLabel.attributedText = activePalletsAttributedText
-    despatchedPalletsLabel.attributedText = despathedPalletsAttributedText
-    boxesLabel.attributedText = boxesAttributedText
-    doneLabel.attributedText = doneAttributedText
+    orderNameLabel.attributedText           = orderNameAttributedText
+    orderIdLabel.attributedText             = orderIdAttributedText
+    activePalletsLabel.attributedText       = activePalletsAttributedText
+    despatchedPalletsLabel.attributedText   = despathedPalletsAttributedText
+    boxesLabel.attributedText               = boxesAttributedText
+    doneLabel.attributedText                = doneAttributedText
   }
 }
 

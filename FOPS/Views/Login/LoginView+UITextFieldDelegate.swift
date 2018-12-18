@@ -10,7 +10,7 @@ import UIKit
 
 extension LoginView: UITextFieldDelegate {
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    
+    // Move onto the next textField upon pressing done button
     if textField == usernameTextField {
       usernameTextField.resignFirstResponder()
       passwordTextField.becomeFirstResponder()

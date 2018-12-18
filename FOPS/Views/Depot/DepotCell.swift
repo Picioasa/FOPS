@@ -17,18 +17,17 @@ class DepotCell: UICollectionViewCell {
     }
   }
   
-  fileprivate let palletNumberLabel = UILabel()
-  fileprivate let boxesLabel = UILabel()
-  fileprivate let productLabel = UILabel()
-  fileprivate let maxLifeLabel = UILabel()
+  private let palletNumberLabel = UILabel()
+  private let boxesLabel        = UILabel()
+  private let productLabel      = UILabel()
+  private let maxLifeLabel      = UILabel()
   
   
-  // MARK: - Object Lifecycle
+  // MARK: - View Lifecycle
   override init(frame: CGRect) {
     super.init(frame: frame)
     setupViewsAndConstraints()
   }
-  
   
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
@@ -36,7 +35,7 @@ class DepotCell: UICollectionViewCell {
 
   
   // MARK: - Private Methods
-  fileprivate func setupViewsAndConstraints() {
+  private func setupViewsAndConstraints() {
     let middleSeparatorView = UIView()
     middleSeparatorView.backgroundColor = UIColor(white: 0, alpha: 0.2)
     
@@ -64,25 +63,23 @@ class DepotCell: UICollectionViewCell {
   }
   
   
-  fileprivate func setupAttributedText() {
+  private func setupAttributedText() {
     guard let pallet = pallet else { return }
     
-    let numberAttributedText = NSMutableAttributedString.attributedText("Pallet Number:", and: " \(String(pallet.number))")
-    
-    let boxesAttributedText = NSMutableAttributedString.attributedText("Boxes", and: " \(String(pallet.boxes))")
-    
+    let numberAttributedText  = NSMutableAttributedString.attributedText("Pallet Number:", and: " \(String(pallet.number))")
+    let boxesAttributedText   = NSMutableAttributedString.attributedText("Boxes", and: " \(String(pallet.boxes))")
     let productAttributedText = NSMutableAttributedString.attributedText("Product:", and: " \(pallet.product ?? "")")
     
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "MMM dd, yyyy"
-    let stringDate = dateFormatter.string(from: pallet.date ?? "")
+    let dateFormatter         = DateFormatter()
+    dateFormatter.dateFormat  = "MMM dd, yyyy"
+    let stringDate            = dateFormatter.string(from: pallet.date ?? "")
     
     let maxLifeAttributedText = NSMutableAttributedString.attributedText("Max Life:", and:  " \(stringDate)")
     
     palletNumberLabel.attributedText = numberAttributedText
-    boxesLabel.attributedText = boxesAttributedText
-    productLabel.attributedText = productAttributedText
-    maxLifeLabel.attributedText = maxLifeAttributedText
+    boxesLabel.attributedText        = boxesAttributedText
+    productLabel.attributedText      = productAttributedText
+    maxLifeLabel.attributedText      = maxLifeAttributedText
   }
 }
 

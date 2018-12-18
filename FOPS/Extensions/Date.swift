@@ -9,8 +9,10 @@
 import Foundation
 
 extension Date: ExpressibleByStringLiteral {
+  
   public init(stringLiteral value: String) {
     let formatter = DateFormatter()
+    
     formatter.dateFormat = "dd-mm"
     if let date = formatter.date(from: value) {
       self = date

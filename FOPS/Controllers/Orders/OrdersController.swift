@@ -12,50 +12,53 @@ import CoreData
 class OrdersController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
   
   // MARK: - Properties
-  fileprivate let searchController = UISearchController(searchResultsController: nil)
+  private let searchController = UISearchController(searchResultsController: nil)
   
-  var orders = [Order]()
-  var filteredOrders = [Order]()
-  var selectedOrderIndexPath: IndexPath?
+  public var orders         = [Order]()
+  public var filteredOrders = [Order]()
+  public var selectedOrderIndexPath: IndexPath?
   
   
-  // MARK: - View Lifecycle
+  // MARK: - Controller Lifecycle
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     setupNavigationBar()
     setupCollectionView()
-    self.orders = CoreDataManager.shared.fetchOrders()
-    filteredOrders = orders
+    
+    self.orders     = CoreDataManager.shared.fetchOrders()
+    filteredOrders  = orders
   }
   
   
   // MARK: - Private Methods
   private func setupCollectionView() {
-    collectionView?.alwaysBounceVertical = true
-    collectionView?.backgroundColor = .darkBlue
+    collectionView?.alwaysBounceVertical  = true
+    collectionView?.backgroundColor       = .darkBlue
     collectionView?.register(OrdersCell.self, forCellWithReuseIdentifier: .ordersControllerCellId)
   }
   
-  
   private func setupNavigationBar() {
     navigationItem.title = "Orders"
-
+    
     // Setup Bar Buttons
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear_white").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSettings))
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "Plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddOrder))
-
+    
     // Setup Search Bar
-    navigationItem.searchController = searchController
-    searchController.searchBar.barStyle = .black
-    searchController.dimsBackgroundDuringPresentation = false
-    searchController.hidesNavigationBarDuringPresentation = false
-    searchController.searchBar.delegate = self
+    navigationItem.searchController                         = searchController
+    searchController.searchBar.barStyle                     = .black
+    searchController.searchBar.delegate                     = self
+    searchController.dimsBackgroundDuringPresentation       = false
+    searchController.hidesNavigationBarDuringPresentation   = false
   }
   
   
   // MARK: - Handlers
   @objc private func handleSettings() {
+    // Presents an alertController with three actions:
+    // Refresh - Fetch all orders
+    // Log Out - Sign out the user
+    // Cancel  - Dismiss the alertController
     let alertController = UIAlertController(title: "Settings", message: nil, preferredStyle: .actionSheet)
     
     alertController.addAction(UIAlertAction(title: "Refresh", style: .default, handler: { (_) in
@@ -79,17 +82,19 @@ class OrdersController: UICollectionViewController, UICollectionViewDelegateFlow
   
   
   @objc private func handleAddOrder() {
-    let createOrder = CreateOrderController()
-    createOrder.delegate = self
-    let navController = UINavigationController(rootViewController: createOrder)
+    // Presents CreateOrderController
+    let createOrder       = CreateOrderController()
+    createOrder.delegate  = self
+    let navController     = UINavigationController(rootViewController: createOrder)
     present(navController, animated: true)
   }
   
   
   @objc func handleDelete(_ sender: UIButton) {
-    guard let cell = sender.superview as? OrdersCell else { return }
-    guard let indexPath = collectionView?.indexPath(for: cell) else { return }
-    let order = orders[indexPath.item]
+    // Deletes the order and updates the database
+    guard let cell        = sender.superview as? OrdersCell else { return }
+    guard let indexPath   = collectionView?.indexPath(for: cell) else { return }
+    let order             = orders[indexPath.item]
     
     CoreDataManager.shared.delete(order: order)
     orders.remove(at: indexPath.item)
