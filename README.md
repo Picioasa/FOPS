@@ -25,6 +25,6 @@ A mobile version of Windows application FOPS, used in warehouses or other logist
 
 
 
-- #### *Retrieve Orders from a JSON file, Persistence using CoreData*
+- #### *Refresh Orders*
 
 ![refresh persistence logout](https://user-images.githubusercontent.com/23437099/47015668-82ab1980-d145-11e8-953d-dbf05c0d6a0d.gif)
